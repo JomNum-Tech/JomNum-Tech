@@ -1,5 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
+import { Header } from '@/components/Header';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -10,10 +11,10 @@ export const metadata: Metadata = {
     description: 'Learn more about our team and what we do at Your Company Name.',
     images: [
       {
-        url: '/assets/springOps.ico', // Correct path to the image
+        url: '/assets/springOps.ico',
         width: 1200,
         height: 630,
-        alt: 'SpringOps automation deployment', 
+        alt: 'SpringOps automation deployment',
       },
     ],
   }
@@ -21,8 +22,6 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="h-screen w-full grid place-content-center hover:cursor-pointer bg-black text-gray-100 hover:bg-gray-600 transition-all ease-in-out">
-        <h1>This is Home Page</h1>
-    </main>
+    <Header />
   )
 }
