@@ -1,29 +1,42 @@
 "use client"
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { motion } from 'framer-motion'
 
 const tableOfContents = [
-  { title: 'Introduction', slug: 'introduction' },
-  { title: 'Getting Started', slug: 'getting-started' },
-  { title: 'Advanced Concepts', slug: 'advanced-concepts' },
-  { title: 'API Reference', slug: 'api-reference' },
-  { title: 'Troubleshooting', slug: 'troubleshooting' },
+  { title: 'Introduction', slug: 'introduction', icon: '📚' },
+  { title: 'Getting Started', slug: 'getting-started', icon: '🚀' },
+  { title: 'Advanced Concepts', slug: 'advanced-concepts', icon: '🧠' },
+  { title: 'API Reference', slug: 'api-reference', icon: '🔧' },
+  { title: 'Troubleshooting', slug: 'troubleshooting', icon: '🔍' },
 ]
 
 export default function Sidebar() {
+  const pathname = usePathname()
+
   return (
-    <aside className="w-64 bg-gray-100 p-6 overflow-auto">
+    <aside className="w-64 bg-white shadow-lg p-6 overflow-auto">
       <nav>
         <ul className="space-y-2">
           {tableOfContents.map((item) => (
-            <li key={item.slug}>
+            <motion.li 
+              key={item.slug}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <Link 
                 href={`/document/${item.slug}`}
-                className="text-blue-600 hover:underline"
+                className={`flex items-center p-2 rounded-lg transition-colors duration-200 ${
+                  pathname === `/documents/${item.slug}`
+                    ? 'bg-blue-100 text-blue-700'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
               >
-                {item.title}
+                <span className="mr-2 text-xl">{item.icon}</span>
+                <span>{item.title}</span>
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </nav>
