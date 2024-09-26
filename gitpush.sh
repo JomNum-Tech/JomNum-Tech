@@ -121,7 +121,7 @@ show_progress() {
 
 # Usage of the progress bar
 echo "Starting a task with progress bar..."
-show_progress 20  # Simulate a 10-second task
+show_progress 5  # Simulate a 10-second task
 echo "Task completed!"
 
 
