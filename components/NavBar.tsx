@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = () => {
     { name: 'Deployment', path: '/deployment' },
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Overview', path: '/overview' },
   ];
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
@@ -23,8 +24,16 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/assets/springOps.jpg" className="text-xl font-bold text-gray-800" aria-label="Your Logo">
-            SpringOps
+          <Link href="/assets/springOps.jpg" aria-label="Your Logo">
+            <a className="text-xl font-bold text-gray-800 flex items-center">
+              <Image
+                src="/assets/springOps.jpg"
+                width={40}
+                height={40}
+                alt="SpringOps Logo"
+              />
+              <span className="ml-2">SpringOps</span>
+            </a>
           </Link>
 
           {/* Desktop menu */}
@@ -33,9 +42,8 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.path}
-                className={`text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium ${
-                  pathname === item.path ? 'bg-gray-100' : ''
-                }`}
+                className={`text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium ${pathname === item.path ? 'bg-gray-100' : ''
+                  }`}
               >
                 {item.name}
               </Link>
@@ -63,9 +71,8 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.path}
-                className={`block text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium ${
-                  pathname === item.path ? 'bg-gray-100' : ''
-                }`}
+                className={`block text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium ${pathname === item.path ? 'bg-gray-100' : ''
+                  }`}
                 onClick={toggleMenu}
               >
                 {item.name}
