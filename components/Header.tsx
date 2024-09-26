@@ -1,7 +1,7 @@
 import React from 'react'
 import { ShapeSeven, Shapes } from './Icon';
 import Image from 'next/image';
-import Link from 'next/link'
+import Link from 'next/link';
 
 export const Header = () => {
 	return (
@@ -19,13 +19,13 @@ export const Header = () => {
 								Automation CI/CD Pipeline, streamline your workflow process
 							</p>
 						</div>
-						<main className="flex justify-between gap-12 w-full px-8">                           
-                            <button className="w-[50%] py-3 px-8 font-medium text-white bg-blue-600 hover:bg-opacity-70 rounded-full transition-all ease-in-out">
-                                Getting Started
-                            </button>                          
-                            <button className="w-[50%] py-3 px-8 font-medium text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white border hover:bg-opacity-90 rounded-full transition-all ease-in-out">
-                                Documentation
-                            </button>
+						<main className="flex justify-between gap-12 w-full px-8">                                  
+                            <Link href="/deployment" className="w-[50%] text-center py-3 px-8 font-medium text-white bg-blue-600 hover:bg-opacity-70 rounded-full transition-all ease-in-out">
+                                <button>Getting Started</button>
+                            </Link>         
+                            <Link href="/document" className="w-[50%] text-center py-3 px-8 font-medium text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white border hover:bg-opacity-90 rounded-full transition-all ease-in-out">
+                                <button>Documentation</button>
+                            </Link>
                         </main>
                         
 					</div>

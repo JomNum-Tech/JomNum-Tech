@@ -136,7 +136,7 @@ const TeamMember: React.FC = () => {
   return (
     <header className="py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
       <Shapes />
-      <section className="ezy__team9 light py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
+      <section className="ezy__team9 light md:py-4 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
         <div className="container px-4 mx-auto">
           <div className="flex justify-center mb-6 md:mb-12">
             <div className="max-w-lg text-center">
