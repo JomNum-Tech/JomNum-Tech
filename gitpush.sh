@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# Function to display usage
+usage() {
+    echo "Usage: $0"
+    echo "This script commits and pushes changes to the current Git repository."
+    exit 1
+}
+
+# Check if the current directory is a Git repository
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    echo "Error: Not inside a Git repository."
+    usage
+fi
+
 # Get the list of updated or newly created files
 changed_files=$(git diff --cached --name-only)
 
@@ -25,8 +38,23 @@ while true; do
     fi
 done
 
+# Stage all changes (if not already staged)
 git add .
-git commit -m "$commit_message"
-git push
 
-echo "Git commit and push completed successfully!"
+# Commit changes with the provided message
+if git commit -m "$commit_message"; then
+    echo "Commit successful: $commit_message"
+else
+    echo "Error: Commit failed."
+    exit 1
+fi
+
+# Push changes to the remote repository
+if git push; then
+    echo "Git push completed successfully!"
+else
+    echo "Error: Push failed."
+    exit 1
+fi
+
+echo "All operations completed successfully!"
