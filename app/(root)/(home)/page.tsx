@@ -6,6 +6,9 @@ import Client from '@/components/Client';
 import Service from '@/components/Service';
 import ScrollProgressBar from '@/components/ScrollProgressBar'
 import BackToTopButton from '@/components/BackToTopButton'
+import WelcomeModal from '@/components/WelcomeModal'
+import TutorialPopUp from '@/components/TutorialPopUp'
+import TelegramChat from '@/components/TelegramChat'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -34,8 +37,11 @@ export default function HomePage() {
         <Service />
         <Client />
         <Testimonial />
-      </main>
+      </main>    
       <BackToTopButton />
+      <WelcomeModal />
+      <TutorialPopUp />
+      <TelegramChat />
     </> 
   )
 }
