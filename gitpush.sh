@@ -88,4 +88,41 @@ else
     exit 1
 fi
 
+# Function to show a progress bar
+show_progress() {
+    local duration=$1  # Total time in seconds for the progress
+    local bar_length=50  # Length of the progress bar
+    
+    # Loop for the duration of the progress
+    for ((i=0; i<=duration; i++)); do
+        # Calculate the percentage of completion
+        local percent=$((i * 100 / duration))
+        # Calculate the number of filled segments in the bar
+        local filled=$((i * bar_length / duration))
+        # Build the progress bar string
+        local bar=""
+        for ((j=0; j<filled; j++)); do
+            bar+="#"
+        done
+        for ((j=filled; j<bar_length; j++)); do
+            bar+=" "
+        done
+
+        # Print the progress bar with percentage, carriage return to overwrite
+        printf "\r[%-${bar_length}s] %d%%" "$bar" "$percent"
+        
+        # Sleep for 1 second to simulate progress
+        sleep 1
+    done
+
+    # Move to the next line when done
+    echo
+}
+
+# Usage of the progress bar
+echo "Starting a task with progress bar..."
+show_progress 10  # Simulate a 10-second task
+echo "Task completed!"
+
+
 echo "All operations completed successfully!"
