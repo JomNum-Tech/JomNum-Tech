@@ -10,9 +10,9 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const navItems = [
+    { name: 'Deployment', path: '/deployment' },
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Deployment', path: '/deployment' },
     { name: 'Contact', path: '/contact' },
   ];
 
