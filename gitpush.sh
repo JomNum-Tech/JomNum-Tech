@@ -88,24 +88,27 @@ else
     exit 1
 fi
 
-# Function to show a progress bar
+# Function to show a colored progress bar
 show_progress() {
     local duration=$1  # Total time in seconds for the progress
     local bar_length=50  # Length of the progress bar
-    
+    local filled_char="\e[32m█\e[0m"  # Green filled character
+    local empty_char="\e[37m░\e[0m"   # White empty character
+
     # Loop for the duration of the progress
     for ((i=0; i<=duration; i++)); do
         # Calculate the percentage of completion
         local percent=$((i * 100 / duration))
         # Calculate the number of filled segments in the bar
         local filled=$((i * bar_length / duration))
+        
         # Build the progress bar string
         local bar=""
         for ((j=0; j<filled; j++)); do
-            bar+="#"
+            bar+="$filled_char"
         done
         for ((j=filled; j<bar_length; j++)); do
-            bar+=" "
+            bar+="$empty_char"
         done
 
         # Print the progress bar with percentage, carriage return to overwrite
@@ -116,13 +119,12 @@ show_progress() {
     done
 
     # Move to the next line when done
-    echo
+    echo -e "\nTask completed!"
 }
 
-# Usage of the progress bar
-echo "Starting a task with progress bar..."
-show_progress 5  # Simulate a 10-second task
-echo "Task completed!"
+# Usage of the colored progress bar
+echo "Starting a task with a modern colored progress bar..."
+show_progress 10  # Simulate a 10-second task
 
 
 echo "All operations completed successfully!"
