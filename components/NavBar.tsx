@@ -15,6 +15,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Overview', path: '/overview' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   const toggleMenu = () => setIsOpen((prev) => !prev);

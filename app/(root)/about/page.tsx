@@ -1,4 +1,4 @@
-import Team from '@/components/about/Team'
+import Team from '@/components/Team'
 import React from 'react'
 
 export default function AboutPage() {
