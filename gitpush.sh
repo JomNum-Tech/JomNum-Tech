@@ -16,6 +16,21 @@ fi
 # Get the list of updated or newly created files
 changed_files=$(git diff --cached --name-only)
 
+# Function to show loading animation
+loading_animation() {
+    local pid=$1
+    local delay=0.75
+    local spin='/-\|'
+
+    while ps -p $pid > /dev/null; do
+        for i in $(seq 0 3); do
+            echo -ne "\r${spin:i:1} Loading..."
+            sleep $delay
+        done
+    done
+    echo -ne "\rDone!        \n"
+}
+
 while true; do
     echo -n "Enter commit message (or press Enter for auto-commit based on file changes): "
     read commit_message
@@ -41,16 +56,32 @@ done
 # Stage all changes (if not already staged)
 git add .
 
-# Commit changes with the provided message
-if git commit -m "$commit_message"; then
+# Commit changes with the provided message in the background with loading animation
+{
+    git commit -m "$commit_message"
+} &
+
+# Get the process ID of the last command (git commit)
+loading_animation $!
+
+# Check if the commit was successful and notify user
+if [ $? -eq 0 ]; then
     echo "Commit successful: $commit_message"
 else
     echo "Error: Commit failed."
     exit 1
 fi
 
-# Push changes to the remote repository
-if git push; then
+# Push changes to the remote repository in the background with loading animation
+{
+    git push 
+} &
+
+# Get the process ID of the last command (git push)
+loading_animation $!
+
+# Check if the push was successful and notify user
+if [ $? -eq 0 ]; then
     echo "Git push completed successfully!"
 else
     echo "Error: Push failed."
