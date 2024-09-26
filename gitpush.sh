@@ -88,12 +88,12 @@ else
     exit 1
 fi
 
-# Function to show a colored progress bar
+# Function to show a progress bar
 show_progress() {
     local duration=$1  # Total time in seconds for the progress
     local bar_length=50  # Length of the progress bar
-    local filled_char="\e[32m█\e[0m"  # Green filled character
-    local empty_char="\e[37m░\e[0m"   # White empty character
+    local filled_char="█"  # Character for filled part of the bar
+    local empty_char="░"   # Character for unfilled part of the bar
 
     # Loop for the duration of the progress
     for ((i=0; i<=duration; i++)); do
@@ -122,9 +122,8 @@ show_progress() {
     echo -e "\nTask completed!"
 }
 
-# Usage of the colored progress bar
-echo "Starting a task with a modern colored progress bar..."
+# Usage of the progress bar
+echo "Starting a task with a modern progress bar..."
 show_progress 10  # Simulate a 10-second task
-
 
 echo "All operations completed successfully!"
