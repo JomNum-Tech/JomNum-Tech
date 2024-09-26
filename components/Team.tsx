@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { FacebookIcon, InstagramIcon, TwitterIcon, GitHubIcon } from '@/components/Icon';
+import { FacebookIcon, InstagramIcon, TwitterIcon, GitHubIcon, Shapes } from '@/components/Icon';
 
 type SocialIconType = typeof FacebookIcon | typeof InstagramIcon | typeof TwitterIcon | typeof GitHubIcon;
 
@@ -134,28 +134,30 @@ const TeamMemberItem: React.FC<{ member: TeamMember }> = ({ member }) => (
 
 const TeamMember: React.FC = () => {
   return (
-    <section className="ezy__team9 light py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
-      <div className="container px-4 mx-auto">
-        <div className="flex justify-center mb-6 md:mb-12">
-          <div className="max-w-lg text-center">
-            <h2 className="text-3xl leading-none font-bold md:text-[45px] mb-4">
-              Our Experts Team
-            </h2>
-            <p>
-              Flexible Team
-            </p>
+    <header className="py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
+      <Shapes />
+      <section className="ezy__team9 light py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
+        <div className="container px-4 mx-auto">
+          <div className="flex justify-center mb-6 md:mb-12">
+            <div className="max-w-lg text-center">
+              <h2 className="text-3xl leading-none font-bold md:text-[45px] mb-4">
+                Our Experts Team
+              </h2>
+              <p>
+                Flexible Team
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-6">
+            {teamMembers.map((member, i) => (
+              <div key={i}>
+                <TeamMemberItem member={member} />
+              </div>
+            ))}
           </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-6">
-          {teamMembers.map((member, i) => (
-            <div key={i}>
-              <TeamMemberItem member={member} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </header>
   );
 };
 
