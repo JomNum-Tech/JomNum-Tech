@@ -16,19 +16,18 @@ fi
 # Get the list of updated or newly created files
 changed_files=$(git diff --cached --name-only)
 
-# Function to show loading animation
-loading_animation() {
-    local pid=$1
-    local delay=0.75
-    local spin='/-\|'
-
-    while ps -p $pid > /dev/null; do
-        for i in $(seq 0 3); do
-            echo -ne "\r${spin:i:1} Loading..."
-            sleep $delay
-        done
+# Function to show loading animation (progress bar)
+show_progress() {
+    local duration=$1
+    local interval=0.1
+    local total_steps=$((duration / interval))
+    
+    echo -n "["
+    for ((i=0; i<total_steps; i++)); do
+        sleep $interval
+        echo -n "#"
     done
-    echo -ne "\rDone!        \n"
+    echo "] Done"
 }
 
 while true; do
@@ -62,10 +61,13 @@ git add .
 } &
 
 # Get the process ID of the last command (git commit)
-loading_animation $!
+pid=$!
+
+# Show progress bar while committing
+show_progress 3  # Adjust duration as needed
 
 # Check if the commit was successful and notify user
-if [ $? -eq 0 ]; then
+if wait $pid; then
     echo "Commit successful: $commit_message"
 else
     echo "Error: Commit failed."
@@ -78,10 +80,13 @@ fi
 } &
 
 # Get the process ID of the last command (git push)
-loading_animation $!
+pid=$!
+
+# Show progress bar while pushing
+show_progress 3  # Adjust duration as needed
 
 # Check if the push was successful and notify user
-if [ $? -eq 0 ]; then
+if wait $pid; then
     echo "Git push completed successfully!"
 else
     echo "Error: Push failed."
