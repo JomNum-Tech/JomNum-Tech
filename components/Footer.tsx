@@ -18,19 +18,19 @@ const Footer = () => {
     {
       title: 'Services',
       links: [
-        { name: 'Web Development', href: '/services/web-development' },
-        { name: 'Mobile Apps', href: '/services/mobile-apps' },
-        { name: 'UI/UX Design', href: '/services/ui-ux-design' },
-        { name: 'Consulting', href: '/services/consulting' },
+        { name: 'Source Control Management', href: '#' },
+        { name: 'Continuous Integration', href: '#' },
+        { name: 'Continuous Delivery & Deployment', href: '#' },
+        { name: 'Infrastructure as Code', href: '#' },
       ],
     },
     {
       title: 'Resources',
       links: [
-        { name: 'Blog', href: '/blog' },
-        { name: 'Newsletter', href: '/newsletter' },
-        { name: 'Events', href: '/events' },
-        { name: 'Help Center', href: '/help' },
+        { name: 'Amazon Web Service', href: '#' },
+        { name: 'Google Cloud', href: '#' },
+        { name: 'Digital Ocean', href: '#' },
+        { name: 'Azure', href: '#' },
       ],
     },
     {
@@ -45,10 +45,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: 'Facebook', icon: FacebookIcon, href: 'https://facebook.com' },
-    { name: 'Instagram', icon: InstagramIcon, href: 'https://instagram.com' },
-    { name: 'Twitter', icon: TwitterIcon, href: 'https://twitter.com' },
-    { name: 'GitHub', icon: GitHubIcon, href: 'https://github.com' },
+    { name: 'Facebook', icon: FacebookIcon, href: 'https://istad.co' },
+    { name: 'Instagram', icon: InstagramIcon, href: 'https://istad.co' },
+    { name: 'Twitter', icon: TwitterIcon, href: 'https://istad.co' },
+    { name: 'GitHub', icon: GitHubIcon, href: 'https://istad.co' },
   ];
 
   return (
@@ -74,7 +74,7 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p>&copy; {currentYear} Your Company Name. All rights reserved.</p>
+              <p>&copy; {currentYear} SpringOps By ISTAD. All rights reserved.</p>
             </div>
             <div className="flex space-x-4">
               {socialLinks.map(({ name, icon: Icon, href }) => (

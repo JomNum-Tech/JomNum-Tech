@@ -24,16 +24,14 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/assets/springOps.jpg" aria-label="Your Logo">
-            <a className="text-xl font-bold text-gray-800 flex items-center">
+          <Link href="/assets/springOps.jpg" aria-label="Your Logo" className="text-xl font-bold text-gray-800 flex items-center">           
               <Image
                 src="/assets/springOps.jpg"
                 width={40}
                 height={40}
                 alt="SpringOps Logo"
               />
-              <span className="ml-2">SpringOps</span>
-            </a>
+              <span className="ml-2">SpringOps</span>  
           </Link>
 
           {/* Desktop menu */}
