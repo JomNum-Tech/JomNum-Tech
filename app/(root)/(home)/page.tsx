@@ -1,6 +1,11 @@
 import React from 'react'
 import { Metadata } from 'next'
 import { Header } from '@/components/Header';
+import Testimonial from '@/components/Testimonial';
+import Client from '@/components/Client';
+import Service from '@/components/Service';
+import ScrollProgressBar from '@/components/ScrollProgressBar'
+import BackToTopButton from '@/components/BackToTopButton'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -22,6 +27,15 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <Header />
+    <>
+      <ScrollProgressBar />
+      <main>
+        <Header />
+        <Service />
+        <Client />
+        <Testimonial />
+      </main>
+      <BackToTopButton />
+    </> 
   )
 }
