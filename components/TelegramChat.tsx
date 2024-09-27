@@ -10,11 +10,28 @@ const TelegramChat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([])
   const [inputMessage, setInputMessage] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const eventSourceRef = useRef<EventSource | null>(null)
 
   useEffect(() => {
-    // Scroll to the bottom of the chat when new messages are added
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  useEffect(() => {
+    if (isOpen && !eventSourceRef.current) {
+      eventSourceRef.current = new EventSource('/api/chat-updates')
+      eventSourceRef.current.onmessage = (event) => {
+        const data = JSON.parse(event.data)
+        setMessages((prevMessages) => [...prevMessages, data])
+      }
+    }
+
+    return () => {
+      if (eventSourceRef.current) {
+        eventSourceRef.current.close()
+        eventSourceRef.current = null
+      }
+    }
+  }, [isOpen])
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -29,31 +46,19 @@ const TelegramChat: React.FC = () => {
     setMessages((prevMessages) => [...prevMessages, newMessage])
     setInputMessage('')
 
-    // Send message to the server
     try {
-      const response = await fetch('/api/telegram-webhook', {
+      await fetch('/api/telegram-webhook', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           message: {
-            chat: { id: '599696334' }, // Replace with actual user ID
+            chat: { id: '599696334' },
             text: inputMessage,
           },
         }),
       })
-
-      if (response.ok) {
-        const data = await response.json()
-        // Add bot's response to the chat
-        const botResponse: Message = {
-          id: Date.now(),
-          text: data.message,
-          sender: 'bot',
-        }
-        setMessages((prevMessages) => [...prevMessages, botResponse])
-      }
     } catch (error) {
       console.error('Error sending message:', error)
     }

@@ -5,8 +5,8 @@ import TelegramBot from 'node-telegram-bot-api';
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN!, { polling: false });
 
 // Named export for POST method
-export async function POST(req: Request) {
-  const body = await req.json(); // Parse JSON body from request
+export async function POST(request: Request) {
+  const body = await request.json(); // Parse JSON body from request
   const { message } = body;
 
   if (message && typeof message === 'object' && 'chat' in message && 'id' in message.chat && 'text' in message) {
@@ -24,11 +24,11 @@ export async function POST(req: Request) {
 
 // Optional GET method (if needed)
 export async function GET() {
-    
   return NextResponse.json({ status: 'success', message: 'GET request received.' });
 }
 
-// Process the received message
 async function processMessage(text: string): Promise<string> {
-  return `You said: ${text}`;
+  // Implement your chatbot logic here
+  // For this example, we'll just echo the message
+  return `${text}`;
 }

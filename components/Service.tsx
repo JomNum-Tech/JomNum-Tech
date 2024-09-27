@@ -1,42 +1,61 @@
 import { Service } from '@/types/ServiceType';
 import React from 'react';
+import Image from 'next/image';
 
 const serviceList: Service[] = [
     {
-        color: "yellow",
-        title: "Product Design",
-        description:
-            "Assumenda non repellendus distinctio nihil dicta sapiente, quibusdam maiores, illum at, aliquid blanditiis eligendi qui.",
+        color: "Yellow",
+        title: "CI",
+        image: {
+            url: "/assets/springOps.jpg",
+            alt: "CI",
+        },
+        description: "Automation Continuous Integration",
     },
     {
-        color: "orange",
-        title: "Photography",
-        description:
-            "Assumenda non repellendus distinctio nihil dicta sapiente, quibusdam maiores, illum at, aliquid blanditiis eligendi qui.",
+        color: "Yellow",
+        title: "CD",
+        image: {
+            url: "/assets/springOps.jpg",
+            alt: "CD",
+        },
+        description: "Automation Continuous Delivery",
     },
     {
-        color: "blue",
-        title: "Coding",
-        description:
-            "Assumenda non repellendus distinctio nihil dicta sapiente, quibusdam maiores, illum at, aliquid blanditiis eligendi qui.",
+        color: "Automate",
+        title: "Cloud",
+        image: {
+            url: "/assets/springOps.jpg",
+            alt: "CD",
+        },
+        description: "Automation Workflow",
     },
     {
-        color: "green",
-        title: "Content Writing",
-        description:
-            "Assumenda non repellendus distinctio nihil dicta sapiente, quibusdam maiores, illum at, aliquid blanditiis eligendi qui.",
+        color: "Yellow",
+        title: "Deloyment",
+        image: {
+            url: "/assets/springOps.jpg",
+            alt: "CD",
+        },
+        description: "Cloud Storage Provider",
     },
     {
-        color: "violet",
-        title: "Branding",
-        description:
-            "Assumenda non repellendus distinctio nihil dicta sapiente, quibusdam maiores, illum at, aliquid blanditiis eligendi qui.",
+        color: "Yellow",
+        title: "Testing",
+        image: {
+            url: "/assets/springOps.jpg",
+            alt: "CD",
+        },
+        description: "Cloud Storage Provider",
     },
     {
-        color: "red",
-        title: "Data Entry",
-        description:
-            "Assumenda non repellendus distinctio nihil dicta sapiente, quibusdam maiores, illum at, aliquid blanditiis eligendi qui.",
+        color: "Yellow",
+        title: "Environment",
+        image: {
+            url: "/assets/springOps.jpg",
+            alt: "CD",
+        },
+        description: "Cloud Storage Provider",
     },
 ];
 
@@ -46,10 +65,20 @@ interface ServiceItemProps {
 }
 
 const ServiceItem: React.FC<ServiceItemProps> = ({ service }) => (
-    <div className="bg-white dark:bg-slate-800 rounded-lg p-4 md:p-12 h-full">
+    <div
+        className="bg-white dark:bg-slate-800 rounded-lg p-4 md:p-12 h-full border-gray-100 border 
+    hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
+    >
         <div
             className={`flex items-center w-20 h-20 bg-white shadow-xl dark:bg-slate-800 rounded-full justify-center p-5 text-3xl text-${service.color}-500`}
-        >           
+        >
+            <Image
+                src={service.image.url}
+                width={100}
+                height={100}
+                alt="CI"
+                className="rounded-full object-cover"
+            />
         </div>
         <div className="mt-4">
             <h5 className="text-2xl font-medium mb-3">{service.title}</h5>
@@ -59,7 +88,7 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ service }) => (
 );
 
 // Define the main component
-const Service23_YgEsPqCJ: React.FC = () => {
+const Service: React.FC = () => {
     return (
         <section className="ezy__service23_YgEsPqCJ py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
             <div className="container mx-auto px-4">
@@ -69,8 +98,7 @@ const Service23_YgEsPqCJ: React.FC = () => {
                             Our Services
                         </h3>
                         <p className="opacity-80 text-[17px] mt-4 mx-auto max-w-md">
-                            Assumenda non repellendus distinctio nihil dicta sapiente,
-                            quibusdam maiores, illum at, aliquid blanditiis eligendi qui.
+                            Continuous Integration And Continuous Delivery
                         </p>
                     </div>
                 </div>
@@ -86,4 +114,4 @@ const Service23_YgEsPqCJ: React.FC = () => {
     );
 };
 
-export default Service23_YgEsPqCJ;
+export default Service;
