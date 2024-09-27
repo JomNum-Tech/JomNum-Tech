@@ -3,12 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, X } from 'lucide-react'
-
-interface Message {
-  id: number
-  text: string
-  sender: 'user' | 'bot'
-}
+import { Message } from '@/types/TelegramChatType'
 
 const TelegramChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)

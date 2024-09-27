@@ -1,14 +1,8 @@
 "use client"
 
+import { Testimonial } from '@/types/TestimonialType';
 import Image from 'next/image';
 import React from 'react';
-
-interface Testimonial {
-    img: string;
-    text: string;
-    user: string;
-    profession: string;
-}
 
 const testimonialData: Testimonial[] = [
     {

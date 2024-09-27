@@ -1,10 +1,6 @@
+import { Clients } from '@/types/ClientsType';
 import Image from 'next/image';
 import React from 'react';
-
-interface Clients {
-    logo: string;
-    alt: string;
-}
 
 const client: Clients[] = [
     {

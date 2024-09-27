@@ -1,12 +1,6 @@
+import { Service } from '@/types/ServiceType';
 import React from 'react';
 
-interface Service {
-    color: string;
-    title: string;
-    description: string;
-}
-
-// Sample service list data
 const serviceList: Service[] = [
     {
         color: "yellow",

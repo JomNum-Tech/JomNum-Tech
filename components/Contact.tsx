@@ -3,12 +3,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
-interface FormValues {
-  name: string;
-  email: string;
-  message: string;
-}
+import { FormValues } from '@/types/FormValuesType';
 
 const initialValues: FormValues = {
   name: '',

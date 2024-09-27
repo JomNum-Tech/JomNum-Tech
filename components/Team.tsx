@@ -3,21 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { FacebookIcon, InstagramIcon, TwitterIcon, GitHubIcon, Shapes } from '@/components/Icon';
-
-type SocialIconType = typeof FacebookIcon | typeof InstagramIcon | typeof TwitterIcon | typeof GitHubIcon;
-
-interface SocialLink {
-  icon: SocialIconType;
-  href: string;
-}
-
-interface TeamMember {
-  picture: string;
-  fullName: string;
-  designation: string;
-  bio: string;
-  socialLinks: SocialLink[];
-}
+import type { TeamMember } from '@/types/TeamType';
 
 const teamMembers: TeamMember[] = [
   {
