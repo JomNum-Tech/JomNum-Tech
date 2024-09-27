@@ -8,6 +8,13 @@ import { useInView } from 'react-intersection-observer';
 interface Section {
   title: string;
   content: string;
+  video: {
+    url: string | null;
+  };
+  resources: {
+    name: string;
+    link: string;
+  }[];
 }
 
 interface Content {
@@ -18,52 +25,51 @@ interface Content {
 
 const contentMap: Record<string, Content> = {
   'introduction': {
-    title: 'Introduction To SpringOps',
-    content: 'Welcome to our documentation. This is the introduction page.',
+    title: 'DevOps Terminology',
+    content: 'What is DevOps?',
     sections: [
-      { title: 'What is SpringOps?', content: 'Our platform is a revolutionary...' },
-      { title: 'Why use SpringOps?', content: 'Our platform offers unique features...' },
+      { 
+        title: 'I. DevOps Meaning',
+        content: 'Our platform is a revolutionary...',
+        video: {
+          url: "https://www.youtube.com/embed/Me3ea4nUt0U", // Use embed URL
+        },
+        resources: [
+          { name: 'SpringOps Overview', link: 'https://www.example.com/overview' },
+          { name: 'Getting Started Guide', link: 'https://www.example.com/getting-started' },
+        ]
+      },
     ]
   },
   'getting-started': {
     title: 'Getting Started',
     content: 'Here\'s how to get started with our product...',
     sections: [
-      { title: 'Installation', content: 'To install our product, follow these steps...' },
-      { title: 'Configuration', content: 'After installation, you need to configure...' },
+      { 
+        title: 'Installation', 
+        content: 'To install our product, follow these steps...',
+        video: { url: null }, // No video for this section
+        resources: [
+          { name: 'Installation Guide', link: 'https://www.example.com/installation-guide' },
+          { name: 'Configuration Tips', link: 'https://www.example.com/configuration-tips' }
+        ]
+      },
+      { 
+        title: 'Configuration', 
+        content: 'After installation, you need to configure...',
+        video: { url: null }, // No video for this section
+        resources: []
+      },
     ]
   },
-  'advanced-concepts': {
-    title: 'Advanced Concepts',
-    content: 'Once you\'re familiar with the basics, you can explore these advanced concepts...',
-    sections: [
-      { title: 'Advanced Feature 1', content: 'This feature allows you to...' },
-      { title: 'Advanced Feature 2', content: 'Another powerful feature is...' },
-    ]
-  },
-  'api-reference': {
-    title: 'API Reference',
-    content: 'Detailed information about our API endpoints and how to use them.',
-    sections: [
-      { title: 'Authentication', content: 'To authenticate your API requests...' },
-      { title: 'Endpoints', content: 'Here are the available API endpoints...' },
-    ]
-  },
-  'troubleshooting': {
-    title: 'Troubleshooting',
-    content: 'Having issues? Check out our troubleshooting guide.',
-    sections: [
-      { title: 'Common Issues', content: 'Here are some common issues and their solutions...' },
-      { title: 'Contact Support', content: 'If you can\'t find a solution, contact our support team...' },
-    ]
-  }
-}
+  // Additional sections...
+};
 
-function Section({ title, content }: Section) {
+function Section({ title, content, video, resources }: Section) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   return (
     <motion.section
@@ -74,9 +80,41 @@ function Section({ title, content }: Section) {
       className="mb-8"
     >
       <h2 className="text-2xl font-semibold mb-4">{title}</h2>
-      <p className="text-gray-700">{content}</p>
+      <p className="text-gray-700 mb-4">{content}</p>
+      
+      {/* Render Video if available */}
+      {video.url && (
+        <div className="mb-4">
+          <h3 className="text-lg font-medium">Watch Video:</h3>
+          <iframe
+            width="100%"
+            height="315"
+            src={video.url}
+            title={title}
+            frameBorder="0"
+            allowFullScreen
+            className="rounded-lg"
+          />
+        </div>
+      )}
+
+      {/* Render Resources if available */}
+      {resources.length > 0 && (
+        <div>
+          <h3 className="text-lg font-medium">Resources:</h3>
+          <ul className="list-disc list-inside">
+            {resources.map((resource) => (
+              <li key={resource.name}>
+                <a href={resource.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+                  {resource.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </motion.section>
-  )
+  );
 }
 
 interface DocumentPageProps {
@@ -100,7 +138,7 @@ export default function DocumentPage({ params }: DocumentPageProps) {
   return (
     <main className="flex">
       <Sidebar />
-      <article className="max-w-3xl mx-auto h-screen grid place-content-center">
+      <article className="max-w-3xl mx-auto py-6 flex-1 ml-8">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -118,10 +156,9 @@ export default function DocumentPage({ params }: DocumentPageProps) {
           {content.content}
         </motion.p>
         {content.sections.map((section, index) => (
-          <Section key={index} title={section.title} content={section.content} />
+          <Section key={index} title={section.title} content={section.content} video={section.video} resources={section.resources} />
         ))}
       </article>
     </main>
   )
 }
-

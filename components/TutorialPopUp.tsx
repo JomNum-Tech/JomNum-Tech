@@ -9,27 +9,27 @@ const tutorialSteps = [
   {
     title: "Welcome to SpringOps",
     content: "Let's take a quick tour of our website and its features.",
-    image: "/assets/homepage.png"
+    image: "/assets/homepage.svg"
   },
   {
     title: "Our Services",
     content: "Explore our range of automation and deployment services.",
-    image: "/placeholder.svg?height=200&width=300"
+    image: "/assets/homepage.svg"
   },
   {
     title: "Client and Partner",
     content: "See how we've helped businesses like yours succeed.",
-    image: "/placeholder.svg?height=200&width=300"
+    image: "/assets/homepage.svg"
   },
   {
     title: "Testimonials",
     content: "Read what our satisfied clients have to say about us.",
-    image: "/placeholder.svg?height=200&width=300"
+    image: "/assets/homepage.svg"
   },
   {
     title: "Get in Touch",
     content: "Ready to start? Contact us to begin your journey with SpringOps.",
-    image: "/assets/contact.png"
+    image: "/assets/homepage.svg"
   }
 ]
 
