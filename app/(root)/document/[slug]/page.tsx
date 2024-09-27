@@ -26,13 +26,24 @@ interface Content {
 const contentMap: Record<string, Content> = {
   'introduction': {
     title: 'DevOps Terminology',
-    content: 'What is DevOps?',
+    content: 'Learning Objective',
     sections: [
       { 
-        title: 'I. DevOps Meaning',
-        content: 'Our platform is a revolutionary...',
+        title: 'I. Story of DevOps',
+        content: 'The story of DevOps began in the late 2000s, as software development teams started to recognize the need for better collaboration between developers and operations teams. In 2007, Belgian IT consultant Patrick Debois noticed the growing disconnect between Dev and Ops, particularly during a large data center migration project where he was responsible for testing\tThe following year, at the 2008 Agile Conference, Andrew Shafer created a "birds of a feather" meeting to discuss "Agile Infrastructure", but no one showed up except Debois, who was looking for ways to make operations as agile as developers. This marked the beginning of the DevOps movement.',
         video: {
-          url: "https://www.youtube.com/embed/Me3ea4nUt0U", // Use embed URL
+          url: "https://www.youtube.com/embed/kBV8gPVZNEE?si=vQPB49wPAvehYa90", // Use embed URL
+        },
+        resources: [
+          { name: 'SpringOps Overview', link: 'https://www.example.com/overview' },
+          { name: 'Getting Started Guide', link: 'https://www.example.com/getting-started' },
+        ]
+      },
+      { 
+        title: 'II. What and Why DevOps?',
+        content: 'The story of DevOps began in the late 2000s, as software development teams started to recognize the need for better collaboration between developers and operations teams. In 2007, Belgian IT consultant Patrick Debois noticed the growing disconnect between Dev and Ops, particularly during a large data center migration project where he was responsible for testing.',
+        video: {
+          url: "https://www.youtube.com/embed/kBV8gPVZNEE?si=vQPB49wPAvehYa90", // Use embed URL
         },
         resources: [
           { name: 'SpringOps Overview', link: 'https://www.example.com/overview' },
@@ -80,12 +91,11 @@ function Section({ title, content, video, resources }: Section) {
       className="mb-8"
     >
       <h2 className="text-2xl font-semibold mb-4">{title}</h2>
-      <p className="text-gray-700 mb-4">{content}</p>
+      <p className="text-gray-700 mb-4 dark:text-gray-100 indent-8">{content}</p>
       
       {/* Render Video if available */}
       {video.url && (
         <div className="mb-4">
-          <h3 className="text-lg font-medium">Watch Video:</h3>
           <iframe
             width="100%"
             height="315"

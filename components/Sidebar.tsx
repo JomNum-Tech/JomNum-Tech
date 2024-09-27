@@ -16,7 +16,7 @@ export default function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="w-64 dark:bg-gray-800 bg-white shadow-lg p-6 overflow-auto">
+    <aside className="w-64 dark:bg-gray-800 bg-white shadow-lg p-6 overflow-auto sticky top-0 h-screen">
       <nav>
         <ul className="space-y-2">
           {tableOfContents.map((item) => (

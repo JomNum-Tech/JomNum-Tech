@@ -7,6 +7,7 @@ import React from "react";
 import { ThemeProvider } from "@/components/theme-provider"
 import TelegramChat from "@/components/TelegramChat";
 import TutorialPopUp from "@/components/TutorialPopUp";
+import BackToTopButton from "@/components/BackToTopButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           {children}
           <TutorialPopUp />
           <TelegramChat />
+          <BackToTopButton />
           <Footer />
         </ThemeProvider>
       </body>

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function DocumentPage() {
   return (
-    <main className="flex ">
+    <main className="flex">
       <Sidebar />
       <div className="max-w-3xl mx-auto w-full h-screen flex flex-col justify-center items-center">
         <h1 className="text-3xl font-bold mb-4">Welcome to the Documentation</h1>
