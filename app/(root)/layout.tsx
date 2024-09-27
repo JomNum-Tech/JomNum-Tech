@@ -5,6 +5,8 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import React from "react";
 import { ThemeProvider } from "@/components/theme-provider"
+import TelegramChat from "@/components/TelegramChat";
+import TutorialPopUp from "@/components/TutorialPopUp";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +31,8 @@ export default function RootLayout({
         >
           <NavBar />
           {children}
+          <TutorialPopUp />
+          <TelegramChat />
           <Footer />
         </ThemeProvider>
       </body>

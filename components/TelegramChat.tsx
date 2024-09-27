@@ -54,7 +54,7 @@ const TelegramChat: React.FC = () => {
         },
         body: JSON.stringify({
           message: {
-            chat: { id: '599696334' },
+            chat: { id: '${process.env.TELEGRAM_CHAT_ID}' },
             text: inputMessage,
           },
         }),
@@ -68,10 +68,13 @@ const TelegramChat: React.FC = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-20 right-4 bg-primary text-primary-foreground p-4 rounded-full shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+        className="fixed bottom-4 right-4 bg-primary text-primary-foreground p-4 rounded-full shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
         aria-label="Open Chat"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m22 2-7 20-4-9-9-4Z"/>
+          <path d="M22 2 11 13"/>
+        </svg>
       </button>
       <AnimatePresence>
         {isOpen && (
@@ -79,13 +82,13 @@ const TelegramChat: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
-            className="fixed bottom-20 right-4 w-96 h-[500px] bg-white rounded-lg shadow-xl flex flex-col"
+            className="fixed right-8 bottom-16 w-96 h-[500px] bg-white dark:bg-gray-800 rounded-lg shadow-xl flex flex-col"
           >
-            <div className="flex justify-between items-center p-4 border-b">
-              <h2 className="text-lg font-semibold">SpringOps Chat</h2>
+            <div className="flex justify-between items-center p-4 border-b dark:border-gray-700">
+              <h2 className="text-lg font-semibold dark:text-white">SpringOps Chat</h2>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
                 aria-label="Close chat"
               >
                 <X className="w-6 h-6" />
@@ -103,7 +106,7 @@ const TelegramChat: React.FC = () => {
                     className={`max-w-[70%] p-3 rounded-lg ${
                       message.sender === 'user'
                         ? 'bg-primary text-primary-foreground'
-                        : 'bg-gray-200 text-gray-800'
+                        : 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white'
                     }`}
                   >
                     {message.text}
@@ -112,14 +115,14 @@ const TelegramChat: React.FC = () => {
               ))}
               <div ref={messagesEndRef} />
             </div>
-            <form onSubmit={handleSendMessage} className="p-4 border-t">
+            <form onSubmit={handleSendMessage} className="p-4 border-t dark:border-gray-700">
               <div className="flex items-center">
                 <input
                   type="text"
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   placeholder="Type your message..."
-                  className="flex-1 p-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="flex-1 p-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-600 dark:text-white"
                 />
                 <button
                   type="submit"

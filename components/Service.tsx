@@ -66,7 +66,7 @@ interface ServiceItemProps {
 
 const ServiceItem: React.FC<ServiceItemProps> = ({ service }) => (
     <div
-        className="bg-white dark:bg-slate-800 rounded-lg p-4 md:p-12 h-full border-gray-100 border 
+        className="bg-white border border-gray-400 dark:border-none dark:bg-slate-800 rounded-lg p-4 md:p-12 h-full
     hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
     >
         <div

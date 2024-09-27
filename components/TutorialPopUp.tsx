@@ -67,7 +67,7 @@ const TutorialPopUp: React.FC = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 left-4 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+        className="fixed bottom-4 left-4 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:bg-primary-dark dark:text-primary-foreground-dark dark:hover:bg-primary-dark/90"
         aria-label="Open Tutorial"
       >
         ?
@@ -78,17 +78,17 @@ const TutorialPopUp: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 bg-black bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-90 flex items-center justify-center p-4 z-50"
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full relative"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 max-w-md w-full relative"
             >
               <button
                 onClick={closeTutorial}
-                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                className="absolute top-2 right-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
                 aria-label="Close tutorial"
               >
                 <X className="w-6 h-6" />
@@ -102,23 +102,23 @@ const TutorialPopUp: React.FC = () => {
                   className="w-full h-48 object-cover rounded-lg"
                 />
               </div>
-              <h2 className="text-2xl font-bold mb-2">{tutorialSteps[currentStep].title}</h2>
-              <p className="mb-4">{tutorialSteps[currentStep].content}</p>
+              <h2 className="text-2xl font-bold mb-2 dark:text-white">{tutorialSteps[currentStep].title}</h2>
+              <p className="mb-4 dark:text-gray-400">{tutorialSteps[currentStep].content}</p>
               <div className="flex justify-between items-center">
                 <button
                   onClick={prevStep}
                   disabled={currentStep === 0}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 text-gray-600 disabled:opacity-50"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 disabled:opacity-50"
                   aria-label="Previous step"
                 >
                   <ChevronLeft className="w-6 h-6" />
                 </button>
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-500 dark:text-gray-400">
                   {currentStep + 1} / {tutorialSteps.length}
                 </span>
                 <button
                   onClick={nextStep}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground dark:bg-primary-dark dark:text-primary-foreground-dark"
                   aria-label={currentStep === tutorialSteps.length - 1 ? "Finish tutorial" : "Next step"}
                 >
                   <ChevronRight className="w-6 h-6" />

@@ -6,7 +6,7 @@ import Client from '@/components/Client';
 import Service from '@/components/Service';
 import ScrollProgressBar from '@/components/ScrollProgressBar'
 import BackToTopButton from '@/components/BackToTopButton'
-import WelcomeModal from '@/components/WelcomeModal'
+// import WelcomeModal from '@/components/WelcomeModal'
 import TutorialPopUp from '@/components/TutorialPopUp'
 import TelegramChat from '@/components/TelegramChat'
 
@@ -39,7 +39,7 @@ export default function HomePage() {
         <Testimonial />
       </main>    
       <BackToTopButton />
-      <WelcomeModal />
+      {/* <WelcomeModal /> */}
       <TutorialPopUp />
       <TelegramChat />
     </> 

@@ -52,7 +52,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-gray-900 dark:bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {footerSections.map((section) => (
@@ -61,7 +61,10 @@ const Footer = () => {
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="hover:text-gray-300 transition-colors">
+                    <Link 
+                      href={link.href} 
+                      className="hover:text-gray-400 dark:hover:text-gray-300 transition-colors"
+                    >
                       {link.name}
                     </Link>
                   </li>
@@ -71,7 +74,7 @@ const Footer = () => {
           ))}
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-700">
+        <div className="mt-8 pt-8 border-t border-gray-700 dark:border-gray-600">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <p>&copy; {currentYear} SpringOps By ISTAD. All rights reserved.</p>
@@ -83,7 +86,7 @@ const Footer = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gray-300 transition-colors"
+                  className="hover:text-gray-400 dark:hover:text-gray-300 transition-colors"
                 >
                   <Icon />
                   <span className="sr-only">{name}</span>

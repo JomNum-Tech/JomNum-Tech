@@ -8,7 +8,7 @@ import TypingHeading from './TypingHeading';
 
 export const Header = () => {
 	return (
-		<header className="py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
+		<header className="py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden">
 			<Shapes />
 
 			<div className="container px-4 mx-auto">
@@ -21,10 +21,10 @@ export const Header = () => {
 							</p>
 						</div>
 						<main className="flex justify-between gap-12 w-full px-8">
-							<Link href="/deployment" className="w-[50%] text-center py-3 px-8 font-medium text-white bg-blue-600 hover:bg-opacity-70 rounded-full transition-all ease-in-out">
+							<Link href="/deployment" className="w-[50%] text-center py-3 px-8 font-medium text-white bg-blue-600 hover:bg-opacity-70 rounded-full transition-all ease-in-out dark:bg-blue-700 dark:hover:bg-opacity-80">
 								<button>Getting Started</button>
 							</Link>
-							<Link href="/document" className="w-[50%] text-center py-3 px-8 font-medium text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white border hover:bg-opacity-90 rounded-full transition-all ease-in-out">
+							<Link href="/document" className="w-[50%] text-center py-3 px-8 font-medium text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white border hover:bg-opacity-90 rounded-full transition-all ease-in-out dark:text-white dark:border-gray-600 dark:hover:bg-blue-600 dark:hover:text-gray-900">
 								<button>Documentation</button>
 							</Link>
 						</main>
