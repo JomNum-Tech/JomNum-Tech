@@ -40,12 +40,12 @@ export default function Sidebar() {
           ))}
         </ul>
       </nav>
-      <div className="mt-4 p-2 bg-gray-50 dark:bg-gray-900 rounded-lg">
+      {/* <div className="mt-4 p-2 bg-gray-50 dark:bg-gray-900 rounded-lg">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Sub Content</h3>
         <p className="text-gray-600 dark:text-gray-400">
           Here you can add any additional information or links related to the selected document.
         </p>
-      </div>
+      </div> */}
     </aside>
   )
 }

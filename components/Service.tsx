@@ -70,14 +70,14 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ service }) => (
     hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
     >
         <div
-            className={`flex items-center w-20 h-20 bg-white shadow-xl dark:bg-slate-800 rounded-full justify-center p-5 text-3xl text-${service.color}-500`}
+            className={`flex items-center w-20 h-20 bg-white shadow-xl dark:bg-slate-800 rounded-full justify-center p-0 text-3xl text-${service.color}-500`}
         >
             <Image
                 src={service.image.url}
                 width={100}
                 height={100}
                 alt="CI"
-                className="rounded-full object-cover"
+                className="rounded-full object-cover w-full h-full"
             />
         </div>
         <div className="mt-4">
