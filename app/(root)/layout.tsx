@@ -32,9 +32,9 @@ export default function RootLayout({
         >
           <NavBar />
           {children}
-          <TutorialPopUp />
-          <TelegramChat />
+          <TutorialPopUp />         
           <BackToTopButton />
+          <TelegramChat />
           <Footer />
         </ThemeProvider>
       </body>

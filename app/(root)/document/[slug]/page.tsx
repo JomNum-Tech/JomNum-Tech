@@ -103,7 +103,7 @@ function Section({ title, content, video, resources }: Section) {
             title={title}
             frameBorder="0"
             allowFullScreen
-            className="rounded-lg"
+            className="rounded-xl"
           />
         </div>
       )}
