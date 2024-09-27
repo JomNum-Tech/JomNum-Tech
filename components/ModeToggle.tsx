@@ -5,11 +5,16 @@ import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
+import { useEffect } from "react"
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false);
 
-  // Function to toggle between light and dark themes
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const toggleTheme = () => {
     if (theme === "dark") {
       setTheme("light")
@@ -18,11 +23,14 @@ export function ModeToggle() {
     }
   }
 
+  if (!mounted) {
+    return null; 
+  }
+
   return (
     <Button variant="outline" size="icon" onClick={toggleTheme}>
-      {/* Sun icon for light mode */}
-      <Sun className={`h-[1.2rem] w-[1.2rem] ${theme === "light" ? 'block' : 'hidden'}`} />
-      {/* Moon icon for dark mode */}
+      
+      <Sun className={`h-[1.2rem] w-[1.2rem] ${theme === "light" ? 'block' : 'hidden'}`} />   
       <Moon className={`h-[1.2rem] w-[1.2rem] ${theme === "dark" ? 'block' : 'hidden'}`} />
       <span className="sr-only">Toggle theme</span>
     </Button>

@@ -44,11 +44,10 @@ const Client: React.FC = () => {
                 <div className="grid grid-cols-12 justify-center mb-16">
                     <div className="col-span-12 lg:col-span-6 lg:col-start-4 text-center">
                         <h2 className="font-bold text-[25px] lg:text-[35px] leading-none mb-6">
-                            Meet Our Clients & Partners
+                            Trusted Client and Partner
                         </h2>
                         <p className="text-lg leading-6 opacity-70">
-                            Create amazing carousel to display your client or partner logos
-                            with extensive design controls.
+                            Meet our client and partner 
                         </p>
                     </div>
                 </div>

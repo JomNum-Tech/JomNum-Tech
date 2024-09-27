@@ -3,27 +3,34 @@
 import { Testimonial } from '@/types/TestimonialType';
 import Image from 'next/image';
 import React from 'react';
+import { StarIcon } from './Icon';
 
 const testimonialData: Testimonial[] = [
     {
-        img: "https://cdn.easyfrontend.com/pictures/testimonial/testimonial22_user1.png",
-        text: "Lorem ipsum dolor sit amet, consectetur elit. Nulla posuere ipsum molestie sem volutpat, non imperdiet leo porttitor.",
-        user: "Mary Tyler",
-        profession: "Traveller",
+        img: {
+            url: '/assets/mentorSpring.jpg',
+        },
+        text: "Best Platform Ever, support khmer product",
+        user: "Chan Chhaya",
+        profession: "Mentor",
     },
     {
-        img: "https://cdn.easyfrontend.com/pictures/testimonial/testimonial22_user2.png",
-        text: "Living creeping our waters evening firmament night. After without lights sixth moved together Also form.",
-        user: "Emily Berry",
-        profession: "Traveller",
+        img: {
+            url: '/assets/mentorSpring.jpg',
+        },
+        text: "Best Platform Ever, support khmer product",
+        user: "Chan Chhaya",
+        profession: "Mentor",
     },
     {
-        img: "https://cdn.easyfrontend.com/pictures/testimonial/testimonial22_user3.png",
-        text: "Creepeth whales man green fruitful. Saw his appear great divide called tree all. Likeness make he land, appear sea for.",
-        user: "John Alex",
-        profession: "Traveller",
+        img: {
+            url: '/assets/mentorSpring.jpg',
+        },
+        text: "Best Platform Ever, support khmer product",
+        user: "Chan Chhaya",
+        profession: "Mentor",
     },
-];
+]
 
 // Define props for the TestimonialItem component
 interface TestimonialItemProps {
@@ -38,16 +45,23 @@ const TestimonialItem: React.FC<TestimonialItemProps> = ({ data }) => {
             <div className="w-full mx-auto flex justify-center">
                 <div className="w-40 h-40 -mt-28 inline-flex justify-center items-center rounded-full border-4 border-white dark:border-[#404156] mx-auto">
                     <Image 
-                        src={img} 
+                        src={img.url} 
                         width={100}
                         height={100}
                         alt={user} 
-                        className="rounded-full w-full" 
+                        className="rounded-full object-cover w-full" 
                     />
                 </div>
             </div>
             <div className="p-6 pb-0 text-center">
                 <p className="text-[17px] leading-[1.7] opacity-60">{text}</p>
+                <div className="flex justify-center align-center gap-2 pt-4">
+                    <StarIcon />
+                    <StarIcon />
+                    <StarIcon />
+                    <StarIcon />
+                    <StarIcon />
+                </div>
                 <h4 className="text-xl font-medium mt-12 mb-2">{user}</h4>
                 <h6 className="text-blue-600">{profession}</h6>
             </div>
@@ -66,10 +80,7 @@ const Testimonial22_PUBEiADA: React.FC = () => {
                         </h2>
                         <div className="max-w-xl">
                             <p className="text-lg leading-6 opacity-60">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                                posuere ipsum molestie sem volutpat, non imperdiet leo
-                                porttitor. Nullam tortor nibh, dictum vitae porttitor eu,
-                                pharetra nec tellus.
+                                Experience from real customer
                             </p>
                         </div>
                     </div>

@@ -1,5 +1,8 @@
 export type Testimonial = {
-    img: string;
+    img: {
+        url: string;
+        alt?: string;
+    };
     text: string;
     user: string;
     profession: string;
