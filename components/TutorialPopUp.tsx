@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import Image from 'next/image';
 
 const tutorialSteps = [
   {
     title: "Welcome to SpringOps",
     content: "Let's take a quick tour of our website and its features.",
-    image: "/placeholder.svg?height=200&width=300"
+    image: "/assets/homepage.png"
   },
   {
     title: "Our Services",
@@ -16,7 +17,7 @@ const tutorialSteps = [
     image: "/placeholder.svg?height=200&width=300"
   },
   {
-    title: "Client Showcase",
+    title: "Client and Partner",
     content: "See how we've helped businesses like yours succeed.",
     image: "/placeholder.svg?height=200&width=300"
   },
@@ -28,7 +29,7 @@ const tutorialSteps = [
   {
     title: "Get in Touch",
     content: "Ready to start? Contact us to begin your journey with SpringOps.",
-    image: "/placeholder.svg?height=200&width=300"
+    image: "/assets/contact.png"
   }
 ]
 
@@ -83,7 +84,7 @@ const TutorialPopUp: React.FC = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-lg shadow-xl p-6 max-w-md w-full relative"
+              className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full relative"
             >
               <button
                 onClick={closeTutorial}
@@ -93,8 +94,10 @@ const TutorialPopUp: React.FC = () => {
                 <X className="w-6 h-6" />
               </button>
               <div className="mb-4">
-                <img
+                <Image
                   src={tutorialSteps[currentStep].image}
+                  width={1200}
+                  height={200}
                   alt={tutorialSteps[currentStep].title}
                   className="w-full h-48 object-cover rounded-lg"
                 />
