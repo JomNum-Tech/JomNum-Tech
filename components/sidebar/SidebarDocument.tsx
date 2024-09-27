@@ -12,7 +12,7 @@ const tableOfContents = [
   { title: 'Troubleshooting', slug: 'troubleshooting', icon: '🔍' },
 ]
 
-export default function Sidebar() {
+export default function SidebarDocument() {
   const pathname = usePathname()
 
   return (

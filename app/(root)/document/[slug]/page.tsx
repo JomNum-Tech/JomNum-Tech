@@ -1,6 +1,6 @@
 "use client"
 
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/components/sidebar/SidebarDocument';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';

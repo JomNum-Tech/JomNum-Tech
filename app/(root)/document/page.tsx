@@ -1,7 +1,6 @@
 
-import React from 'react'
-import { Metadata } from 'next'
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/components/sidebar/SidebarDocument';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Document',
