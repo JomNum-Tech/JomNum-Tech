@@ -1,9 +1,14 @@
 "use client"
 
-import React from "react";
-import Image from "next/image";
-import { FacebookIcon, InstagramIcon, TwitterIcon, GitHubIcon, Shapes } from '@/components/Icon';
-import type { TeamMember } from '@/types/TeamType';
+import React, { useState } from "react"
+import Image from "next/image"
+import { motion } from "framer-motion"
+import { FacebookIcon, InstagramIcon, TwitterIcon, GitHubIcon, Shapes } from '@/components/Icon'
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge"
+import type { TeamMember } from '@/types/TeamType'
 
 const teamMembers: TeamMember[] = [
   {
@@ -11,6 +16,7 @@ const teamMembers: TeamMember[] = [
     fullName: "Ing Muyleang",
     designation: "Mentor",
     bio: "Be Flexible",
+    expertise: ["Leadership", "Project Management", "Agile Methodologies"],
     socialLinks: [
       { icon: FacebookIcon, href: "#" },
       { icon: InstagramIcon, href: "#" },
@@ -21,8 +27,9 @@ const teamMembers: TeamMember[] = [
   {
     picture: "/assets/meh.jpg",
     fullName: "Rous Sovanara",
-    designation: "Full Stack x DevSecOps",
-    bio: "Say goodbye to Manual",
+    designation: "Leader",
+    bio: "Be Flexible",
+    expertise: ["Leadership", "Project Management", "Agile Methodologies"],
     socialLinks: [
       { icon: FacebookIcon, href: "#" },
       { icon: InstagramIcon, href: "#" },
@@ -33,8 +40,9 @@ const teamMembers: TeamMember[] = [
   {
     picture: "/assets/mehUI.jpg",
     fullName: "Pov Sokny",
-    designation: "Full Stack x DevSecOps",
-    bio: "Say goodbye to Manual",
+    designation: "FullStack x DevOps",
+    bio: "Be Flexible",
+    expertise: ["Leadership", "Project Management", "Agile Methodologies"],
     socialLinks: [
       { icon: FacebookIcon, href: "#" },
       { icon: InstagramIcon, href: "#" },
@@ -45,8 +53,9 @@ const teamMembers: TeamMember[] = [
   {
     picture: "/assets/antony.jpg",
     fullName: "Mom Makara",
-    designation: "Full Stack x DevSecOps",
-    bio: "Say goodbye to Manual",
+    designation: "FullStack x DevOps",
+    bio: "Be Flexible",
+    expertise: ["Leadership", "Project Management", "Agile Methodologies"],
     socialLinks: [
       { icon: FacebookIcon, href: "#" },
       { icon: InstagramIcon, href: "#" },
@@ -57,8 +66,9 @@ const teamMembers: TeamMember[] = [
   {
     picture: "/assets/ben.jpg",
     fullName: "On Soben",
-    designation: "Full Stack x DevSecOps",
-    bio: "Say goodbye to Manual",
+    designation: "FullStack x DevOps",
+    bio: "Be Flexible",
+    expertise: ["Leadership", "Project Management", "Agile Methodologies"],
     socialLinks: [
       { icon: FacebookIcon, href: "#" },
       { icon: InstagramIcon, href: "#" },
@@ -69,8 +79,9 @@ const teamMembers: TeamMember[] = [
   {
     picture: "/assets/nak.jpg",
     fullName: "Sol Vathanak",
-    designation: "Full Stack x DevSecOps",
-    bio: "Say goodbye to Manual",
+    designation: "FullStack x DevOps",
+    bio: "Be Flexible",
+    expertise: ["Leadership", "Project Management", "Agile Methodologies"],
     socialLinks: [
       { icon: FacebookIcon, href: "#" },
       { icon: InstagramIcon, href: "#" },
@@ -78,73 +89,164 @@ const teamMembers: TeamMember[] = [
       { icon: GitHubIcon, href: "#" },
     ],
   },
-];
+  // ... (other team members)
+]
 
-const TeamMemberItem: React.FC<{ member: TeamMember }> = ({ member }) => (
-  <div className="bg-white dark:bg-slate-800 shadow-xl rounded-xl hover:-translate-y-1 duration-500 h-full p-6 lg:p-8">
-    <div className="relative w-32 h-32 mx-auto">
-      <Image
-        src={member.picture}
-        alt={member.fullName}
-        fill
-        className="rounded-full border-4 p-1 border-blue-600 object-cover"
-        onError={(e) => {
-          const target = e.target as HTMLImageElement;
-          target.src = "/assets/placeholder.jpg";
-        }}
-      />
-    </div>
-    <div className="mt-6">
-      <h4 className="text-2xl font-medium mb-1">{member.fullName}</h4>
-      <p className="mb-4 text-sm">{member.designation}</p>
-      <p className="opacity-50">{member.bio}</p>
-      <div className="mt-6">
-        {member.socialLinks.map((item, i) => {
-          const IconComponent = item.icon;
-          return (
-            <a
-              href={item.href}
-              className={`inline-block opacity-60 transition duration-300 hover:translate-y-1 hover:opacity-100 ${
-                i + 1 !== member.socialLinks.length && "mr-4"
-              }`}
-              key={i}
-            >
-              <IconComponent />
-            </a>
-          );
-        })}
-      </div>
-    </div>
-  </div>
-);
+const TeamMemberItem: React.FC<{ member: TeamMember }> = ({ member }) => {
+  const [isHovered, setIsHovered] = useState(false)
 
-const TeamMember: React.FC = () => {
   return (
-    <header className="py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
-      <Shapes />
-      <section className="ezy__team9 light md:py-4 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white">
-        <div className="container px-4 mx-auto">
-          <div className="flex justify-center mb-6 md:mb-12">
-            <div className="max-w-lg text-center">
-              <h2 className="text-3xl leading-none font-bold md:text-[45px] mb-4">
-                Our Experts Team
-              </h2>
-              <p>
-                Flexible Team
-              </p>
+    <motion.div
+      className="bg-white dark:bg-slate-800 shadow-xl rounded-xl h-full p-6 lg:p-8 relative overflow-hidden"
+      whileHover={{ y: -10 }}
+      transition={{ duration: 0.3 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="relative w-32 h-32 mx-auto mb-6">
+        <Image
+          src={member.picture}
+          alt={member.fullName}
+          fill
+          className="rounded-full border-4 p-1 border-blue-600 object-cover transition-transform duration-300"
+          style={{ transform: isHovered ? 'scale(1.1)' : 'scale(1)' }}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement
+            target.src = "/assets/placeholder.jpg"
+          }}
+        />
+      </div>
+      <div className="text-center">
+        <h4 className="text-2xl font-medium mb-1">{member.fullName}</h4>
+        <p className="mb-4 text-sm text-blue-600 dark:text-blue-400">{member.designation}</p>
+        <p className="opacity-75 mb-4">{member.bio}</p>
+        <div className="flex flex-wrap justify-center gap-2 mb-4">
+          {member.expertise.map((skill, index) => (
+            <Badge key={index} variant="secondary">{skill}</Badge>
+          ))}
+        </div>
+        <div className="flex justify-center space-x-4">
+          {member.socialLinks.map((item, i) => {
+            const IconComponent = item.icon
+            return (
+              <motion.a
+                href={item.href}
+                className="opacity-60 hover:opacity-100 transition-opacity"
+                key={i}
+                whileHover={{ y: -3 }}
+              >
+                <IconComponent />
+              </motion.a>
+            )
+          })}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+const AboutUs: React.FC = () => {
+  return (
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <header className="py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
+        <Shapes />
+        <div className="container mx-auto px-4">
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold text-center mb-6"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            About Our Team
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-center max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            We are a group of passionate developers dedicated to creating innovative solutions and fostering a culture of continuous learning and growth.
+          </motion.p>
+        </div>
+      </header>
+
+      <main className="container mx-auto px-4 py-12">
+        <Tabs defaultValue="team" className="mb-12">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsTrigger value="team">Our Team</TabsTrigger>
+            <TabsTrigger value="mission">Our Mission</TabsTrigger>
+            <TabsTrigger value="values">Our Values</TabsTrigger>
+          </TabsList>
+          <TabsContent value="team">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {teamMembers.map((member, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <TeamMemberItem member={member} />
+                </motion.div>
+              ))}
             </div>
+          </TabsContent>
+          <TabsContent value="mission">
+            <Card>
+              <CardContent className="p-6">
+                <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
+                <p className="mb-4">
+                  Our mission is to empower businesses and individuals through innovative technology solutions. We strive to create software that not only meets the current needs of our clients but also anticipates future challenges in the ever-evolving digital landscape.
+                </p>
+                <p>
+                  By fostering a culture of continuous learning and collaboration, we aim to push the boundaries of what is possible in software development and deliver exceptional value to our clients and the wider tech community.
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="values">
+            <Card>
+              <CardContent className="p-6">
+                <h2 className="text-2xl font-bold mb-4">Our Values</h2>
+                <ul className="list-disc list-inside space-y-2">
+                  <li>Innovation: We embrace new technologies and methodologies to stay at the forefront of our field.</li>
+                  <li>Collaboration: We believe in the power of teamwork and open communication.</li>
+                  <li>Integrity: We uphold the highest standards of honesty and ethical behavior in all our interactions.</li>
+                  <li>Continuous Learning: We are committed to personal and professional growth.</li>
+                  <li>User-Centric Approach: We prioritize the needs and experiences of end-users in everything we create.</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-center">Join Our Team</h2>
+          <p className="text-center mb-8">
+            We are always looking for talented individuals to join our team. If you are passionate about technology and want to work on exciting projects, we would love to hear from you!
+          </p>
+          <div className="flex justify-center">
+            <Button size="lg">View Open Positions</Button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-6">
-            {teamMembers.map((member, i) => (
-              <div key={i}>
-                <TeamMemberItem member={member} />
-              </div>
+        </section>
+
+        <section>
+          <h2 className="text-3xl font-bold mb-6 text-center">Our Expertise</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {['React', 'Next.js', 'Node.js', 'TypeScript', 'DevOps', 'Cloud Computing', 'AI/ML', 'Cybersecurity'].map((skill, index) => (
+              <Card key={index}>
+                <CardContent className="p-4 text-center">
+                  <Badge className="mb-2">{skill}</Badge>
+                  <p className="text-sm opacity-75">Expert Level</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
-        </div>
-      </section>
-    </header>
-  );
-};
+        </section>
+      </main>
 
-export default TeamMember;
+    </div>
+  )
+}
+
+export default AboutUs

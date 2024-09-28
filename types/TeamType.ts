@@ -12,6 +12,7 @@ export type TeamMember = {
     fullName: string;
     designation: string;
     bio: string;
+    expertise: string[];    
     socialLinks: SocialLink[];
 }
 
