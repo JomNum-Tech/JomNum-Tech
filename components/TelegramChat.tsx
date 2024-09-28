@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, X } from 'lucide-react'
+import MaintenanceModal from '@/components/MaintenanceModal'; 
 
 export interface Message {
   id: number;
@@ -16,6 +17,7 @@ const TelegramChat: React.FC = () => {
   const [inputMessage, setInputMessage] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
+  const [isMaintenanceOpen, setIsMaintenanceOpen] = useState<boolean>(false);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -92,7 +94,7 @@ const TelegramChat: React.FC = () => {
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => setIsMaintenanceOpen(true)} 
         className="fixed bottom-4 right-4 bg-primary text-primary-foreground p-4 rounded-full shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
         aria-label="Open Chat"
       >
@@ -101,6 +103,10 @@ const TelegramChat: React.FC = () => {
           <path d="M22 2 11 13" />
         </svg>
       </button>
+      <MaintenanceModal 
+        isOpen={isMaintenanceOpen} 
+        onClose={() => setIsMaintenanceOpen(false)} 
+      />
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -110,7 +116,7 @@ const TelegramChat: React.FC = () => {
             className="fixed right-8 bottom-16 w-96 h-[500px] bg-white dark:bg-gray-800 rounded-lg shadow-xl flex flex-col"
           >
             <div className="flex justify-between items-center p-4 border-b dark:border-gray-700">
-              <h2 className="text-lg font-semibold dark:text-white">AI Chatbot</h2>
+              <h2 className="text-lg font-semibold dark:text-white">SpringOps-GPT</h2>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
