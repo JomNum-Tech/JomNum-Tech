@@ -43,7 +43,7 @@ const TypingHeading: React.FC<{ texts: string[]; typingSpeed?: number; deletingS
     }, [texts, textIndex, isDeleting, typingSpeed, deletingSpeed, pause, currentIndex]);
 
     return (
-        <h1 className="text-[56px] font-semibold w-full text-center">
+        <h1 className="text-[48px] font-semibold w-full text-center leading-height h-[100px]" style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
             {displayedText}
             <span className="blinking-cursor bg-green-500">|</span>
         </h1>

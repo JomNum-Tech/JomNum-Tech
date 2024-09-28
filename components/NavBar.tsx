@@ -45,7 +45,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.path}
-                className={`text-gray-800 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium ${pathname === item.path ? 'bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700' : ''
+                className={`text-gray-800 dark:text-gray-100 hover:text-green-500 dark:hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium ${pathname === item.path ? 'bg-gray-100 dark:bg-gray-800 border text-green-500 border-green-500 dark:border-green-700' : ''
                   }`}
               >
                 {item.name}

@@ -1,9 +1,8 @@
 "use client"
 
-import React from 'react'
-import { ShapeSeven, Shapes } from './Icon';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ShapeSeven, Shapes } from '../Icon';
 import TypingHeading from './TypingHeading';
 
 export const Header = () => {
@@ -11,7 +10,7 @@ export const Header = () => {
 		<header className="py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden">
 			<Shapes />
 
-			<div className="container px-4 mx-auto">
+			<div className="container px-4 mx-auto ">
 				<div className="grid grid-cols-12 gap-6 items-center">
 					<div className="col-span-12 lg:col-span-7 xl:col-span-6 text-center lg:text-start mb-12 lg:mb-0">
 						<TypingHeading texts={['Say Goodbye To Manual', 'Say Hello To Automation!']} />
@@ -21,10 +20,10 @@ export const Header = () => {
 							</p>
 						</div>
 						<main className="flex justify-between gap-12 w-full px-8">
-							<Link href="/deployment" className="w-[50%] text-center py-3 px-8 font-medium text-white bg-blue-600 hover:bg-opacity-70 rounded-full transition-all ease-in-out dark:bg-blue-700 dark:hover:bg-opacity-80">
+							<Link href="/deployment" className="w-[50%] text-center py-3 px-8 font-medium border border-green-500 text-white bg-green-500 hover:bg-opacity-70 rounded-full transition-all ease-in-out dark:bg-green-500 dark:hover:bg-opacity-80 hover:bg-white hover:text-green-500">
 								<button>Getting Started</button>
 							</Link>
-							<Link href="/document" className="w-[50%] text-center py-3 px-8 font-medium text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white border hover:bg-opacity-90 rounded-full transition-all ease-in-out dark:text-white dark:border-gray-600 dark:hover:bg-blue-600 dark:hover:text-gray-900">
+							<Link href="/document" className="w-[50%] text-center py-3 px-8 font-medium text-green-500 border border-green-500 hover:bg-green-500 hover:text-white hover:bg-opacity-90 rounded-full transition-all ease-in-out dark:text-white dark:border-gray-600 dark:hover:bg-green-600 dark:hover:text-gray-900">
 								<button>Documentation</button>
 							</Link>
 						</main>
@@ -36,8 +35,8 @@ export const Header = () => {
 						<div className="relative">
 							<Image
 								src="/assets/springOps.jpg"
-								width={600}
-								height={600}
+								width={400}
+								height={400}
 								alt=""
 								className="max-w-full h-auto rounded-full mx-auto"
 							/>

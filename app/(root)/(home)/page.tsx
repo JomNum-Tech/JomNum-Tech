@@ -1,14 +1,13 @@
-import React from 'react'
-import { Metadata } from 'next'
-import { Header } from '@/components/Header';
-import Testimonial from '@/components/Testimonial';
+import BackToTopButton from '@/components/BackToTopButton';
 import Client from '@/components/Client';
-import Service from '@/components/Service';
-import ScrollProgressBar from '@/components/ScrollProgressBar'
-import BackToTopButton from '@/components/BackToTopButton'
+import ScrollProgressBar from '@/components/ScrollProgressBar';
+import Service from '@/components/home/Service';
+import Testimonial from '@/components/Testimonial';
+import { Header } from '@/components/home/Header';
+import { Metadata } from 'next';
 // import WelcomeModal from '@/components/WelcomeModal'
-import TutorialPopUp from '@/components/TutorialPopUp'
-import TelegramChat from '@/components/TelegramChat'
+import TelegramChat from '@/components/TelegramChat';
+import TutorialPopUp from '@/components/TutorialPopUp';
 
 export const metadata: Metadata = {
   title: 'Home',

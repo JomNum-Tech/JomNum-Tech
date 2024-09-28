@@ -5,7 +5,7 @@ import Image from 'next/image';
 const serviceList: Service[] = [
     {
         color: "Yellow",
-        title: "CI",
+        title: "Deployment",
         image: {
             url: "/assets/springOps.jpg",
             alt: "CI",
@@ -14,7 +14,7 @@ const serviceList: Service[] = [
     },
     {
         color: "Yellow",
-        title: "CD",
+        title: "Create Pipeline",
         image: {
             url: "/assets/springOps.jpg",
             alt: "CD",
@@ -23,7 +23,7 @@ const serviceList: Service[] = [
     },
     {
         color: "Automate",
-        title: "Cloud",
+        title: "Learning Platform",
         image: {
             url: "/assets/springOps.jpg",
             alt: "CD",
@@ -32,7 +32,7 @@ const serviceList: Service[] = [
     },
     {
         color: "Yellow",
-        title: "Deloyment",
+        title: "Documentation",
         image: {
             url: "/assets/springOps.jpg",
             alt: "CD",
@@ -41,7 +41,7 @@ const serviceList: Service[] = [
     },
     {
         color: "Yellow",
-        title: "Testing",
+        title: "Testing Environment",
         image: {
             url: "/assets/springOps.jpg",
             alt: "CD",
@@ -50,7 +50,7 @@ const serviceList: Service[] = [
     },
     {
         color: "Yellow",
-        title: "Environment",
+        title: "Automate Workflow",
         image: {
             url: "/assets/springOps.jpg",
             alt: "CD",
@@ -66,21 +66,21 @@ interface ServiceItemProps {
 
 const ServiceItem: React.FC<ServiceItemProps> = ({ service }) => (
     <div
-        className="bg-white border border-gray-400 dark:border-none dark:bg-slate-800 rounded-lg p-4 md:p-12 h-full
+        className="bg-gray-100 border border-gray-200 dark:border-none dark:bg-slate-800 rounded-lg p-4 md:p-12 h-full
     hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
     >
-        <div
-            className={`flex items-center w-20 h-20 bg-white shadow-xl dark:bg-slate-800 rounded-full justify-center p-0 text-3xl text-${service.color}-500`}
-        >
-            <Image
-                src={service.image.url}
-                width={100}
-                height={100}
-                alt="CI"
-                className="rounded-full object-cover w-full h-full"
-            />
+        <div className={`flex items-center justify-center w-50 h-50 bg-white shadow-xl dark:bg-slate-800 rounded-full text-3xl text-${service.color}-500`}>       
+            <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                    src={service.image.url}
+                    width={500}
+                    height={500}
+                    alt="CI"
+                    className="rounded-lg object-cover w-full h-    "
+                />
+            </div>     
         </div>
-        <div className="mt-4">
+        <div className="mt-4 text-center">
             <h5 className="text-2xl font-medium mb-3">{service.title}</h5>
             <p className="opacity-80 mb-0">{service.description}</p>
         </div>
@@ -94,7 +94,7 @@ const Service: React.FC = () => {
             <div className="container mx-auto px-4">
                 <div className="flex flex-wrap">
                     <div className="w-full text-center mb-12">
-                        <h3 className="text-3xl font-bold md:text-[45px] mb-2">
+                        <h3 className="text-3xl font-bold md:text-[45px] mb-2 text-green-500">
                             Our Services
                         </h3>
                         <p className="opacity-80 text-[17px] mt-4 mx-auto max-w-md">
