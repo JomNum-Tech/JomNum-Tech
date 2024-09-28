@@ -43,7 +43,7 @@ const Client: React.FC = () => {
             <div className="container px-4">
                 <div className="grid grid-cols-12 justify-center mb-16">
                     <div className="col-span-12 lg:col-span-6 lg:col-start-4 text-center">
-                        <h2 className="font-bold text-[25px] lg:text-[35px] leading-none mb-6">
+                        <h2 className="font-bold text-3xl lg:text-[35px] leading-none mb-6 text-green-500">
                             Trusted Client and Partner
                         </h2>
                         <p className="text-lg leading-6 opacity-70">

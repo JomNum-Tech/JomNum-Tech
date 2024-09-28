@@ -1,9 +1,9 @@
 import BackToTopButton from '@/components/BackToTopButton';
-import Client from '@/components/Client';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
-import Service from '@/components/home/Service';
-import Testimonial from '@/components/Testimonial';
+import Client from '@/components/home/Client';
 import { Header } from '@/components/home/Header';
+import Service from '@/components/home/Service';
+import Testimonial from '@/components/home/Testimonial';
 import { Metadata } from 'next';
 // import WelcomeModal from '@/components/WelcomeModal'
 import TelegramChat from '@/components/TelegramChat';

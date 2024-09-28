@@ -3,7 +3,7 @@
 import { Testimonial } from '@/types/TestimonialType';
 import Image from 'next/image';
 import React from 'react';
-import { StarIcon } from './Icon';
+import { StarIcon } from '../Icon';
 
 const testimonialData: Testimonial[] = [
     {
@@ -43,13 +43,13 @@ const TestimonialItem: React.FC<TestimonialItemProps> = ({ data }) => {
     return (
         <div className="bg-white dark:bg-[#404156] shadow-xl rounded-b-xl h-full p-6 lg:p-12">
             <div className="w-full mx-auto flex justify-center">
-                <div className="w-40 h-40 -mt-28 inline-flex justify-center items-center rounded-full border-4 border-white dark:border-[#404156] mx-auto">
+                <div className="w-40 h-40 -mt-28 inline-flex justify-center items-center rounded-full border-4 border-white dark:border-[#404156] mx-auto overflow-hidden">
                     <Image 
                         src={img.url} 
-                        width={100}
-                        height={100}
-                        alt={user} 
-                        className="rounded-full object-cover w-full" 
+                        width={500}
+                        height={500}
+                        alt={user}                        
+                        className="rounded-full object-cover w-full h-full" 
                     />
                 </div>
             </div>
@@ -69,13 +69,13 @@ const TestimonialItem: React.FC<TestimonialItemProps> = ({ data }) => {
     );
 };
 
-const Testimonial22_PUBEiADA: React.FC = () => {
+const Testimonial: React.FC = () => {
     return (
         <section className="ezy__testimonial22_PUBEiADA py-14 md:py-24 bg-white dark:bg-[#2E2F41] text-zinc-900 dark:text-white">
             <div className="container px-4 mx-auto">
                 <div className="flex justify-center mb-6 md:mb-12">
                     <div className="max-w-2xl text-center">
-                        <h2 className="text-3xl md:text-[55px] font-bold mb-6">
+                        <h2 className="text-3xl md:text-[35px] font-bold mb-6 text-green-500">
                             What People Says
                         </h2>
                         <div className="max-w-xl">
@@ -97,4 +97,4 @@ const Testimonial22_PUBEiADA: React.FC = () => {
     );
 }
 
-export default Testimonial22_PUBEiADA;
+export default Testimonial;

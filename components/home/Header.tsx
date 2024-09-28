@@ -20,10 +20,10 @@ export const Header = () => {
 							</p>
 						</div>
 						<main className="flex justify-between gap-12 w-full px-8">
-							<Link href="/deployment" className="w-[50%] text-center py-3 px-8 font-medium border border-green-500 text-white bg-green-500 hover:bg-opacity-70 rounded-full transition-all ease-in-out dark:bg-green-500 dark:hover:bg-opacity-80 hover:bg-white hover:text-green-500">
+							<Link href="/deployment" className="w-[50%] text-center py-3 px-8 font-medium border border-green-500 text-white bg-green-500 hover:bg-opacity-70 rounded-full transition-all ease-in-out dark:bg-green-500 dark:hover:bg-opacity-0 hover:bg-white dark:hover:text-white hover:text-green-500">
 								<button>Getting Started</button>
 							</Link>
-							<Link href="/document" className="w-[50%] text-center py-3 px-8 font-medium text-green-500 border border-green-500 hover:bg-green-500 hover:text-white hover:bg-opacity-90 rounded-full transition-all ease-in-out dark:text-white dark:border-gray-600 dark:hover:bg-green-600 dark:hover:text-gray-900">
+							<Link href="/document" className="w-[50%] text-center py-3 px-8 font-medium text-green-500 border border-green-500 hover:bg-green-500 hover:text-white hover:bg-opacity-90 rounded-full transition-all ease-in-out dark:text-white dark:border-green-500 dark:hover:bg-green-600 dark:hover:text-white">
 								<button>Documentation</button>
 							</Link>
 						</main>
