@@ -13,7 +13,7 @@ const tableOfContents = [
   { title: 'Troubleshooting', slug: 'troubleshooting', icon: Search },
 ]
 
-export default function EnhancedSidebar() {
+export default function SidebarDocument() {
   const pathname = usePathname()
 
   return (
@@ -56,7 +56,7 @@ export default function EnhancedSidebar() {
           Our support team is always here to assist you.
         </p>
         <a 
-          href="#" 
+          href="/contact" 
           className="inline-flex items-center text-sm text-blue-600 dark:text-blue-400 hover:underline"
         >
           Contact Support
