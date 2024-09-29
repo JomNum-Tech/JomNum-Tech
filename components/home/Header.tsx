@@ -37,7 +37,10 @@ export const Header = () => {
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5 }}
 						>
-							<TypingHeading texts={['Say Goodbye To Manual', 'Say Hello To Automation!']} />
+							<TypingHeading texts={[
+								{ text: 'Say Goodbye To Manual' },
+								{ text: 'Say Hello To Automation!', style: { color: 'rgb(34,197,94)' } }
+							]} />
 						</motion.div>
 						<motion.p
 							initial={{ opacity: 0 }}
@@ -61,7 +64,7 @@ export const Header = () => {
 						</div>
 
 						<div className="hidden lg:block">
-							<h3 className="text-xl font-semibold mb-4 text-center">Key Features</h3>
+							<h3 className="text-xl font-semibold mb-4 text-center text-green-500">Key Features</h3>
 							<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 								{features.map((feature, index) => (
 									<motion.div

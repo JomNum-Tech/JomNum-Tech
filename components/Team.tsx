@@ -5,7 +5,6 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { FacebookIcon, InstagramIcon, TwitterIcon, GitHubIcon, Shapes } from '@/components/Icon'
 import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import type { TeamMember } from '@/types/TeamType'
@@ -152,7 +151,7 @@ const AboutUs: React.FC = () => {
         <Shapes />
         <div className="container mx-auto px-4">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-center mb-6"
+            className="text-4xl md:text-6xl font-bold text-center mb-6 text-green-500"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -221,17 +220,14 @@ const AboutUs: React.FC = () => {
         </Tabs>
 
         <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-6 text-center">Join Our Team</h2>
+          <h2 className="text-3xl font-bold mb-6 text-center text-green-500">Join Our Team</h2>
           <p className="text-center mb-8">
             We are always looking for talented individuals to join our team. If you are passionate about technology and want to work on exciting projects, we would love to hear from you!
-          </p>
-          <div className="flex justify-center">
-            <Button size="lg">View Open Positions</Button>
-          </div>
+          </p>      
         </section>
 
         <section>
-          <h2 className="text-3xl font-bold mb-6 text-center">Our Expertise</h2>
+          <h2 className="text-3xl font-bold mb-6 text-center text-green-500">Our Expertise</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {['React', 'Next.js', 'Node.js', 'TypeScript', 'DevOps', 'Cloud Computing', 'AI/ML', 'Cybersecurity'].map((skill, index) => (
               <Card key={index}>

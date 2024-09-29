@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-const TypingHeading: React.FC<{ texts: string[]; typingSpeed?: number; deletingSpeed?: number; pause?: number }> = ({
+interface TextStyle {
+    text: string;
+    style?: React.CSSProperties;
+}
+
+const TypingHeading: React.FC<{
+    texts: TextStyle[];
+    typingSpeed?: number;
+    deletingSpeed?: number;
+    pause?: number;
+}> = ({
     texts,
     typingSpeed = 100,
     deletingSpeed = 50,
@@ -14,10 +24,10 @@ const TypingHeading: React.FC<{ texts: string[]; typingSpeed?: number; deletingS
     useEffect(() => {
         let timeoutId: ReturnType<typeof setTimeout>;
 
-        if (!isDeleting && textIndex < texts[currentIndex].length) {
+        if (!isDeleting && textIndex < texts[currentIndex].text.length) {
             // Typing text
             timeoutId = setTimeout(() => {
-                setDisplayedText((prev) => prev + texts[currentIndex].charAt(textIndex));
+                setDisplayedText((prev) => prev + texts[currentIndex].text.charAt(textIndex));
                 setTextIndex((prev) => prev + 1);
             }, typingSpeed);
         } else if (isDeleting && textIndex > 0) {
@@ -44,7 +54,11 @@ const TypingHeading: React.FC<{ texts: string[]; typingSpeed?: number; deletingS
 
     return (
         <h1 className="text-[48px] font-semibold w-full text-center leading-height h-[100px]" style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
-            {displayedText}
+            {texts.map((item, index) => (
+                <span key={index} style={index === currentIndex ? item.style : { display: 'none' }}>
+                    {displayedText}
+                </span>
+            ))}
             <span className="blinking-cursor bg-green-500">|</span>
         </h1>
     );

@@ -45,7 +45,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
             className
           )}
           {...props}
@@ -106,7 +106,12 @@ export default function Navbar() {
                       </>
                     ) : (
                       <Link href={item.path} legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        <NavigationMenuLink 
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            pathname === item.path ? "bg-green-500 text-white" : "text-gray-800 hover:bg-green-100"
+                          )}
+                        >
                           {item.name}
                         </NavigationMenuLink>
                       </Link>
@@ -157,7 +162,7 @@ export default function Navbar() {
                           <Link
                             key={child.name}
                             href={child.path}
-                            className="block px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+                            className="block px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-green-500 hover:bg-green-100"
                             onClick={toggleMenu}
                           >
                             {child.name}
@@ -171,8 +176,8 @@ export default function Navbar() {
                       className={cn(
                         "block px-3 py-2 rounded-md text-sm font-medium",
                         pathname === item.path
-                          ? "bg-primary text-primary-foreground"
-                          : "text-foreground hover:bg-accent"
+                          ? "bg-green-500 text-white"
+                          : "text-gray-800 hover:bg-green-100"
                       )}
                       onClick={toggleMenu}
                     >
