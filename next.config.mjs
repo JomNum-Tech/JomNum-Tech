@@ -4,6 +4,7 @@ const nextConfig = {
     images: {
         domains: ['cdn.easyfrontend.com', 'img.youtube.com'],
     },
+    output: 'standalone',
 };
 
 export default nextConfig;

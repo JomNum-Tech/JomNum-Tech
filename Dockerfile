@@ -1,37 +1,44 @@
-# Use the official Node.js image as the base image for the build stage
+# Use an official Node.js runtime as a parent image for building
 FROM node:18-alpine AS builder
 
-# Set the working directory inside the container
+# Install necessary packages
+RUN apk add --no-cache libc6-compat
+
+# Set the working directory to /app
 WORKDIR /app
 
-# Copy package.json and package-lock.json (or yarn.lock) to install dependencies
-COPY package*.json ./
+# Copy package files and install dependencies
+COPY package.json package-lock.json ./
+RUN npm install --production
 
-# Install production dependencies only
-RUN npm install 
-
-# Copy the rest of the application code
+# Copy all other project files to the working directory
 COPY . .
 
 # Build the Next.js application
 RUN npm run build
 
-# Use a smaller base image for the production stage
-FROM node:18-alpine AS production
+# Multi-stage build process to create a lightweight production image
+FROM node:18-alpine
 
-# Set the working directory inside the container
+# Install dumb-init and create a non-root user
+RUN apk update && apk add --no-cache dumb-init && adduser -D nextuser
+
+# Set work directory as app
 WORKDIR /app
 
 # Copy only necessary files from the builder stage
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
+COPY --chown=nextuser:nextuser --from=builder /app/public ./public
+COPY --chown=nextuser:nextuser --from=builder /app/.next/standalone ./
+COPY --chown=nextuser:nextuser --from=builder /app/.next/static ./.next/static
 
-# Install only production dependencies for the final image
-RUN npm install 
+# Set non-root user
+USER nextuser
 
-# Expose port 3000 to allow access to the application
+# Expose the application port
 EXPOSE 3000
 
-# Start the Next.js application
-CMD ["npm", "start"]
+# Set environment variables for production
+ENV HOST=0.0.0.0 PORT=3000 NODE_ENV=production
+
+# Start the application using dumb-init to handle PID 1 properly
+CMD ["dumb-init", "node", "server.js"]
