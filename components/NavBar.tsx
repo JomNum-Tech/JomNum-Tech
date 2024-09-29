@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown } from 'lucide-react'
-import Image from 'next/image'
-import { Toggle } from '@/components/ui/toggle'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
+import { Toggle } from '@/components/ui/toggle';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,10 +15,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { ModeToggle } from './ModeToggle'
+} from "@/components/ui/navigation-menu";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { ModeToggle } from './ModeToggle';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -33,7 +33,7 @@ const navItems = [
   { name: 'About', path: '/about' },
   { name: 'Overview', path: '/overview' },
   { name: 'Contact', path: '/contact' },
-]
+];
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -57,15 +57,15 @@ const ListItem = React.forwardRef<
         </a>
       </NavigationMenuLink>
     </li>
-  )
-})
-ListItem.displayName = "ListItem"
+  );
+});
+ListItem.displayName = "ListItem";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  const toggleMenu = () => setIsOpen((prev) => !prev)
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   return (
     <nav className="sticky top-0 z-40 w-full backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -79,7 +79,7 @@ export default function Navbar() {
               alt="SpringOps Logo"
               className="rounded-full aspect-square object-cover"
             />
-            <span className="text-xl font-bold">SpringOps</span>
+            <span className="text-xl font-bold text-gray-800 dark:text-white">SpringOps</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-4">
@@ -89,7 +89,7 @@ export default function Navbar() {
                   <NavigationMenuItem key={item.name}>
                     {item.children ? (
                       <>
-                        <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
+                        <NavigationMenuTrigger className="text-gray-800 dark:text-white">{item.name}</NavigationMenuTrigger>
                         <NavigationMenuContent>
                           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                             {item.children.map((child) => (
@@ -109,7 +109,7 @@ export default function Navbar() {
                         <NavigationMenuLink 
                           className={cn(
                             navigationMenuTriggerStyle(),
-                            pathname === item.path ? "bg-green-500 text-white" : "text-gray-800 hover:bg-green-100"
+                            pathname === item.path ? "bg-green-500 text-white" : "text-gray-800 dark:text-white hover:bg-green-100"
                           )}
                         >
                           {item.name}
@@ -149,27 +149,17 @@ export default function Navbar() {
               {navItems.map((item) => (
                 <div key={item.name}>
                   {item.children ? (
-                    <div className="space-y-2">
+                    <>
                       <button
-                        className="w-full flex justify-between items-center text-left px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent"
+                        className="w-full flex justify-between items-center text-left px-3 py-2 rounded-md text-sm font-medium text-gray-900 dark:text-white hover:bg-accent"
                         onClick={() => {}}
                       >
                         {item.name}
                         <ChevronDown className="h-4 w-4" />
                       </button>
-                      <div className="pl-4 space-y-2">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.name}
-                            href={child.path}
-                            className="block px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-green-500 hover:bg-green-100"
-                            onClick={toggleMenu}
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
+                      {/* Dropdown for children */}
+                      {/* Implement dropdown logic here if needed */}
+                    </>
                   ) : (
                     <Link
                       href={item.path}
@@ -177,7 +167,7 @@ export default function Navbar() {
                         "block px-3 py-2 rounded-md text-sm font-medium",
                         pathname === item.path
                           ? "bg-green-500 text-white"
-                          : "text-gray-800 hover:bg-green-100"
+                          : "text-gray-800 dark:text-white hover:bg-green-100"
                       )}
                       onClick={toggleMenu}
                     >
@@ -191,5 +181,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </nav>
-  )
+  );
 }

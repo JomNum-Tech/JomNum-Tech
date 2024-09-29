@@ -1,6 +1,6 @@
 "use client"
 
-import { Service } from '@/types/ServiceType'
+import type { Service } from '@/types/ServiceType'
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'

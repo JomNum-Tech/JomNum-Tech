@@ -1,15 +1,14 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
-import { videos } from '../page'; // Adjust import path as needed
 import SidebarCourses from '@/components/sidebar/SidebarCourse';
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { List } from 'lucide-react';
 import Link from 'next/link';
+import { videos } from '@/data/videos'; 
 
 interface Video {
   slug: string;
@@ -36,7 +35,7 @@ const VideoPage = ({ params }: { params: { slug: string } }) => {
     
   }, [params.slug]);
 
-  if (!currentVideo) return null; // or loading state
+  if (!currentVideo) return null; // or a loading state
 
   const currentIndex = videos.findIndex(v => v.slug === currentVideo.slug);
   const prevVideo = videos[currentIndex - 1];
@@ -51,9 +50,9 @@ const VideoPage = ({ params }: { params: { slug: string } }) => {
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="video">Video</TabsTrigger>      
+            <TabsTrigger value="video">Video</TabsTrigger>
             <TabsTrigger value="comments">Comments</TabsTrigger>
-            <TabsTrigger value="related">Related</TabsTrigger>     
+            <TabsTrigger value="related">Related</TabsTrigger>
           </TabsList>
 
           <TabsContent value="video">
@@ -75,11 +74,13 @@ const VideoPage = ({ params }: { params: { slug: string } }) => {
           <TabsContent value="comments">
             {/* Comment section code here */}
             {/* Similar to previous implementation */}
+            <p>Comments section coming soon!</p>
           </TabsContent>
 
           {/* Related Videos Tab */}
           <TabsContent value="related">
             {/* You can list related videos here */}
+            <p>Related videos section coming soon!</p>
           </TabsContent>
         </Tabs>
 

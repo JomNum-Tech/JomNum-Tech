@@ -2,18 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import { notFound } from 'next/navigation';
-import { quizzes } from '../page';
+import { quizzes } from '@/data/quizzes';
 
 const QuizPage = ({ params }: { params: { slug: string } }) => {
   const quiz = quizzes.find((q) => q.slug === params.slug);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(300); // Total time for the quiz (300 seconds)
+  const [timeLeft, setTimeLeft] = useState(300); 
   const [isTimeUp, setIsTimeUp] = useState(false);
 
   if (!quiz) {
-    notFound(); 
+    notFound();
   }
 
   const questions = [

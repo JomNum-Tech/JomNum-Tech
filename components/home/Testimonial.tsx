@@ -1,6 +1,6 @@
 "use client"
 
-import { Testimonial } from '@/types/TestimonialType'
+import type { Testimonial } from '@/types/TestimonialType'
 import { Star, Quote } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"

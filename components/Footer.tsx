@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import React from 'react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { Facebook, Instagram, Twitter, Github, ArrowRight } from 'lucide-react'
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Facebook, Instagram, Twitter, Github, ArrowRight } from 'lucide-react';
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const footerSections = [
   {
@@ -36,17 +36,17 @@ const footerSections = [
       { name: 'Accessibility', href: '#' },
     ],
   },
-]
+];
 
 const socialLinks = [
   { name: 'Facebook', icon: Facebook, href: 'https://istad.co' },
   { name: 'Instagram', icon: Instagram, href: 'https://istad.co' },
   { name: 'Twitter', icon: Twitter, href: 'https://istad.co' },
   { name: 'GitHub', icon: Github, href: 'https://istad.co' },
-]
+];
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gray-900 text-gray-300">
@@ -112,7 +112,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

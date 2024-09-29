@@ -1,4 +1,6 @@
 
+
+import BetaNotify from '@/components/BetaNotify';
 import Sidebar from '@/components/sidebar/SidebarDocument';
 import { Metadata } from 'next';
 import { FaBookOpen } from 'react-icons/fa';
@@ -25,8 +27,12 @@ export const metadata: Metadata = {
 export default function DocumentPage() {
 
   return (
+
+    <>
+      <BetaNotify />
       <main className="flex">
         <Sidebar />
+        
         <div className="max-w-3xl mx-auto w-full h-screen flex flex-col justify-center items-center p-4">
 
           {/* Hero Section */}
@@ -51,5 +57,7 @@ export default function DocumentPage() {
           <p>Please select a topic from the sidebar to get started.</p>
         </div>
       </main>
+    </>
+      
   );
 }
