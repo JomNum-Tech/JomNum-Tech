@@ -1,4 +1,3 @@
-// app/courses/page.tsx
 
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,13 +8,23 @@ export default function CoursesPage() {
       <div className="flex-1 p-8">
         <h1 className="text-3xl font-bold mb-8">Courses</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Link href="/learning/courses/devops-terminology">
+          <Link href="/learning/courses/containerization">
             <Card>
               <CardHeader>
-                <CardTitle>DevOps Terminology</CardTitle>
+                <CardTitle>Containerization</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>Overview of DevOps</p>
+                <p>Overview of Containerization</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/learning/courses/ansible">
+            <Card>
+              <CardHeader>
+                <CardTitle>Ansible</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Overview of Ansible</p>
               </CardContent>
             </Card>
           </Link>

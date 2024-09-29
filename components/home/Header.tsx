@@ -1,50 +1,137 @@
 "use client"
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { ShapeSeven, Shapes } from '../Icon';
-import TypingHeading from './TypingHeading';
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { ShapeSeven, Shapes } from '../Icon'
+import TypingHeading from './TypingHeading'
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { ArrowRight, Code, Rocket, Book } from 'lucide-react'
 
 export const Header = () => {
+	const [activeFeature, setActiveFeature] = useState(0)
+	const features = [
+		{ icon: <Rocket className="h-6 w-6" />, title: 'Automated Deployment', description: 'Streamline your CI/CD pipeline' },
+		{ icon: <Code className="h-6 w-6" />, title: 'Easy Integration', description: 'Seamlessly integrate with your existing tools' },
+		{ icon: <Book className="h-6 w-6" />, title: 'Comprehensive Docs', description: 'Detailed guides for smooth onboarding' },
+	]
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setActiveFeature((prev) => (prev + 1) % features.length)
+		}, 5000)
+		return () => clearInterval(interval)
+	}, [])
+
 	return (
-		<header className="py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden">
+		<header className="py-14 md:py-24 bg-background text-foreground relative overflow-hidden">
 			<Shapes />
 
-			<div className="container px-4 mx-auto ">
-				<div className="grid grid-cols-12 gap-6 items-center">
-					<div className="col-span-12 lg:col-span-7 xl:col-span-6 text-center lg:text-start mb-12 lg:mb-0">
-						<TypingHeading texts={['Say Goodbye To Manual', 'Say Hello To Automation!']} />
-						<div className="max-w-xl w-full ">
-							<p className="text-[17px] leading-relaxed opacity-80 my-12 w-full text-center">
-								Automation CI/CD Pipeline, streamline your workflow process
-							</p>
+			<div className="container px-4 mx-auto">
+				<div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+					<div className="lg:col-span-7 xl:col-span-6 text-center lg:text-start mb-12 lg:mb-0">
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5 }}
+						>
+							<TypingHeading texts={['Say Goodbye To Manual', 'Say Hello To Automation!']} />
+						</motion.div>
+						<motion.p
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ delay: 0.5, duration: 0.5 }}
+							className="text-lg leading-relaxed text-muted-foreground mt-6 mb-8 max-w-xl mx-auto lg:mx-0 text-center"
+						>
+							Automation CI/CD Pipeline, streamline your workflow process
+						</motion.p>
+						<div className="flex flex-col sm:flex-row items-center justify-center w-full gap-4 mb-12">
+							<Button asChild size="lg" className="bg-green-500 hover:bg-green-400 dark:text-white">
+								<Link href="/deployment">
+									Getting Started <ArrowRight className="ml-2 h-4 w-4" />
+								</Link>
+							</Button>
+							<Button asChild variant="outline" size="lg">
+								<Link href="/document">
+									Documentation <Book className="ml-2 h-4 w-4" />
+								</Link>
+							</Button>
 						</div>
-						<main className="flex justify-between gap-12 w-full px-8">
-							<Link href="/deployment" className="w-[50%] text-center py-3 px-8 font-medium border border-green-500 text-white bg-green-500 hover:bg-opacity-70 rounded-full transition-all ease-in-out dark:bg-green-500 dark:hover:bg-opacity-0 hover:bg-white dark:hover:text-white hover:text-green-500">
-								<button>Getting Started</button>
-							</Link>
-							<Link href="/document" className="w-[50%] text-center py-3 px-8 font-medium text-green-500 border border-green-500 hover:bg-green-500 hover:text-white hover:bg-opacity-90 rounded-full transition-all ease-in-out dark:text-white dark:border-green-500 dark:hover:bg-green-600 dark:hover:text-white">
-								<button>Documentation</button>
-							</Link>
-						</main>
 
+						<div className="hidden lg:block">
+							<h3 className="text-xl font-semibold mb-4 text-center">Key Features</h3>
+							<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+								{features.map((feature, index) => (
+									<motion.div
+										key={index}
+										initial={{ opacity: 0, y: 20 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ delay: 0.2 * index, duration: 0.5 }}
+									>
+										<Card className="p-4 h-full flex flex-col justify-between">
+											<div className="flex items-center mb-2">
+												{feature.icon}
+												<h4 className="text-lg font-medium ml-2">{feature.title}</h4>
+											</div>
+											<p className="text-sm text-muted-foreground">{feature.description}</p>
+										</Card>
+									</motion.div>
+								))}
+							</div>
+						</div>
 					</div>
-					<div className="col-span-12 lg:col-span-5 relative text-center">
+					<div className="lg:col-span-5 relative text-center">
 						<ShapeSeven />
-
-						<div className="relative">
+						<motion.div
+							initial={{ opacity: 0, scale: 0.8 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{ duration: 0.5 }}
+							className="relative"
+						>
 							<Image
 								src="/assets/springOps.jpg"
 								width={400}
 								height={400}
-								alt=""
+								alt="SpringOps Logo"
 								className="max-w-full h-auto rounded-full mx-auto"
 							/>
-							<div className="absolute w-[500px] h-[500px] left-0 top-0 bg-slate-100 dark:bg-slate-800 rounded-full -z-20"></div>
+							<div className="absolute w-[500px] h-[500px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent rounded-full -z-10"></div>
+						</motion.div>
+						<div className="mt-8 lg:hidden">
+							<h3 className="text-xl font-semibold mb-4 text-center">Key Features</h3>
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ delay: 0.5, duration: 0.5 }}
+								className="relative h-24 overflow-hidden"
+							>
+								{features.map((feature, index) => (
+									<motion.div
+										key={index}
+										className="absolute inset-0 flex items-center justify-center"
+										initial={{ opacity: 0, y: 20 }}
+										animate={{
+											opacity: activeFeature === index ? 1 : 0,
+											y: activeFeature === index ? 0 : 20
+										}}
+										transition={{ duration: 0.5 }}
+									>
+										<Card className="p-4 w-full max-w-xs">
+											<div className="flex items-center mb-2">
+												{feature.icon}
+												<h4 className="text-lg font-medium ml-2">{feature.title}</h4>
+											</div>
+											<p className="text-sm text-muted-foreground">{feature.description}</p>
+										</Card>
+									</motion.div>
+								))}
+							</motion.div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</header>
-	);
-};
+	)
+}

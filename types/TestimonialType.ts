@@ -6,4 +6,5 @@ export type Testimonial = {
     text: string;
     user: string;
     profession: string;
+    company: string;
 }
