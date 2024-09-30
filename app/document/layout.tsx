@@ -11,7 +11,7 @@ import React from "react";
 
 import Loading from "@/components/Loading";
 import { Suspense } from 'react';
-import NavBarRoot from "@/components/NavBarRoot";
+import NavBarDocument from "@/components/NavBarDocument";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +29,7 @@ export default function RootLayout({
           // enableSystem
           disableTransitionOnChange
         >
-          <NavBarRoot />
+          <NavBarDocument />
             <Suspense fallback={<Loading />}>
               {children}
             </Suspense>
