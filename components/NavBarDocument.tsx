@@ -66,7 +66,7 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   return (
-    <nav className="sticky top-0 z-40 w-full backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="z-50 w-full backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <Link href="/" aria-label="SpringOps Logo" className="flex items-center gap-4">
@@ -80,14 +80,14 @@ export default function Navbar() {
             <span className="text-xl font-bold text-gray-800 dark:text-white">SpringOps</span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4 ">
             <NavigationMenu>
               <NavigationMenuList>
                 {navItems.map((item) => (
                   <NavigationMenuItem key={item.name}>
                     {item.children ? (
                       <>
-                        <NavigationMenuTrigger className="text-gray-800 dark:text-white">{item.name}</NavigationMenuTrigger>
+                        <NavigationMenuTrigger className=" text-gray-800 dark:text-white">{item.name}</NavigationMenuTrigger>
                         <NavigationMenuContent>
                           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                             {item.children.map((child) => (

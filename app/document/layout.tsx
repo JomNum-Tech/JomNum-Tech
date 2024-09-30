@@ -30,9 +30,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NavBarDocument />
-            <Suspense fallback={<Loading />}>
-              {children}
-            </Suspense>
+          <Suspense fallback={<Loading />}>
+            {children}
+          </Suspense>
           <TutorialPopUp />
           <BackToTopButton />
           <TelegramChat />

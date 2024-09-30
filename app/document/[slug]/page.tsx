@@ -178,7 +178,7 @@ export default function DocumentPage({ params }: { params: { slug?: string } }) 
   );
 
   return (
-    <div className="flex bg-white dark:bg-gray-900 min-h-screen">
+    <div className="z-10 flex bg-white dark:bg-gray-900 min-h-screen">
       <Sidebar />
       <main className="flex-1 max-w-4xl mx-auto px-4 py-8">
         
