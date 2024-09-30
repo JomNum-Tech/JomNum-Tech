@@ -1,3 +1,4 @@
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 import Team from '@/components/Team';
 import { Metadata } from 'next';
 
@@ -21,8 +22,12 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main>
-      <Team />
-    </main>
+    <>
+      <ScrollProgressBar />
+      <main>
+        <Team />
+      </main>
+    </>
+    
   );
 }
