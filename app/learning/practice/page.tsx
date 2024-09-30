@@ -2,6 +2,34 @@ import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import SidebarCourses from '@/components/sidebar/SidebarCourse'
+import Link from 'next/link'
+
+const practiceExercises = [
+  {
+    slug: "ci-cd-pipeline",
+    title: "CI/CD Pipeline Setup",
+    description: "Learn to set up a Continuous Integration and Continuous Deployment pipeline.",
+    category: "DevOps"
+  },
+  {
+    slug: "docker-containerization",
+    title: "Docker Containerization",
+    description: "Practice containerizing applications using Docker.",
+    category: "DevOps"
+  },
+  {
+    slug: "spring-boot-rest-api",
+    title: "Spring Boot REST API",
+    description: "Build a RESTful API using Spring Boot.",
+    category: "Spring"
+  },
+  {
+    slug: "spring-security",
+    title: "Spring Security Implementation",
+    description: "Implement authentication and authorization using Spring Security.",
+    category: "Spring"
+  }
+]
 
 export default function PracticePage() {
   return (
@@ -10,24 +38,22 @@ export default function PracticePage() {
       <div className="flex-1 p-8">
         <h1 className="text-3xl font-bold mb-8">Practice Exercises</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Todo List App</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Build a simple Todo List application using React.</p>
-              <Button className="mt-4">Start Exercise</Button>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>API Integration</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>Practice integrating a REST API into a React application.</p>
-              <Button className="mt-4">Start Exercise</Button>
-            </CardContent>
-          </Card>
+          {practiceExercises.map((exercise) => (
+            <Card key={exercise.slug}>
+              <CardHeader>
+                <CardTitle>{exercise.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="mb-2">{exercise.description}</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium text-muted-foreground">{exercise.category}</span>
+                  <Link href={`/learning/practice/${exercise.slug}`}>
+                    <Button>Start Exercise</Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </main>
