@@ -73,52 +73,52 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           <Link href="/" aria-label="SpringOps Logo" className="flex items-center gap-4">
             <Image
-              src="/assets/springOps.jpg"
+              src="https://7zg3rv0nfdklwx5q.public.blob.vercel-storage.com/jomnum-tech/JomNumTech-El1XBQ46OC1eci4SAFFyiOAM6nikG1.png"
               width={40}
               height={40}
               alt="SpringOps Logo"
               className="rounded-full aspect-square object-cover"
             />
-            <span className="text-xl font-bold text-gray-800 dark:text-white">SpringOps</span>
+            <span className="text-xl font-bold text-gray-800 dark:text-white">JomNum-Tech</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-4">
             <NavigationMenu>
-              <NavigationMenuList>
+                <NavigationMenuList>
                 {navItems.map((item) => (
                   <NavigationMenuItem key={item.name}>
-                    {item.children ? (
-                      <>
-                        <NavigationMenuTrigger className="text-gray-800 dark:text-white">{item.name}</NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                            {item.children.map((child) => (
-                              <ListItem
-                                key={child.name}
-                                title={child.name}
-                                href={child.path}
-                              >
-                                {`Explore our ${child.name.toLowerCase()} services`}
-                              </ListItem>
-                            ))}
-                          </ul>
-                        </NavigationMenuContent>
-                      </>
-                    ) : (
-                      <Link href={item.path} legacyBehavior passHref>
-                        <NavigationMenuLink 
-                          className={cn(
-                            navigationMenuTriggerStyle(),
-                            pathname === item.path ? "bg-green-500 text-white" : "text-gray-800 dark:text-white hover:bg-green-100"
-                          )}
-                        >
-                          {item.name}
-                        </NavigationMenuLink>
-                      </Link>
+                  {item.children ? (
+                  <>
+                  <NavigationMenuTrigger className="text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">{item.name}</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white dark:bg-gray-900 rounded-md shadow-lg">
+                    {item.children.map((child) => (
+                    <ListItem
+                    key={child.name}
+                    title={child.name}
+                    href={child.path}
+                    >
+                    {`Explore our ${child.name.toLowerCase()} services`}
+                    </ListItem>
+                    ))}
+                    </ul>
+                  </NavigationMenuContent>
+                  </>
+                  ) : (
+                  <Link href={item.path} legacyBehavior passHref>
+                  <NavigationMenuLink 
+                    className={cn(
+                    navigationMenuTriggerStyle(),
+                    pathname === item.path ? "bg-blue-500 text-white" : "text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400"
                     )}
+                  >
+                    {item.name}
+                  </NavigationMenuLink>
+                  </Link>
+                  )}
                   </NavigationMenuItem>
                 ))}
-              </NavigationMenuList>
+                </NavigationMenuList>
             </NavigationMenu>
             <Toggle />
           </div>
@@ -166,8 +166,8 @@ export default function Navbar() {
                       className={cn(
                         "block px-3 py-2 rounded-md text-sm font-medium",
                         pathname === item.path
-                          ? "bg-green-500 text-white"
-                          : "text-gray-800 dark:text-white hover:bg-green-100"
+                          ? "bg-blue-500 text-white"
+                          : "text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400"
                       )}
                       onClick={toggleMenu}
                     >

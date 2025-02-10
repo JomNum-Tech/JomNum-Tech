@@ -68,7 +68,7 @@
 .blinking-cursor {
   font-weight: 100;
   font-size: 56px;
-  color: rgb(34, 197, 94);
+  color: rgb(59, 130, 246);
   animation: blink 1s step-end infinite;
 }
 
@@ -93,4 +93,14 @@
   50% {
     opacity: 0;
   }
+}
+
+/* Custom Scrollbar Styling */
+* {
+  @apply scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-300;
+}
+
+/* Optional: Smooth scrolling across the entire app */
+html {
+  scroll-behavior: smooth;
 }

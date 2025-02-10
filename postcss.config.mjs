@@ -3,6 +3,9 @@ const config = {
   plugins: {
     tailwindcss: {},
   },
+  domains: {
+    
+  }
 };
 
 export default config;

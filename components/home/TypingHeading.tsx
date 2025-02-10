@@ -59,7 +59,7 @@ const TypingHeading: React.FC<{
                     {displayedText}
                 </span>
             ))}
-            <span className="blinking-cursor bg-green-500">|</span>
+            <span className="blinking-cursor bg-blue-500">|</span>
         </h1>
     );
 };
